@@ -30,6 +30,10 @@ docker compose up -d
 7. `tags`
 8. `industries`
 9. `review_tasks`
+10. `user_profiles`
+11. `saved_items`
+12. `notifications`
+13. `match_applications`
 
 详细字段参照：
 
@@ -79,6 +83,9 @@ QiuQiuTech 首页模块多，如果直接让前台拼很多 Directus 请求，�
 3. 4-6 条 `topics`
 4. 4-6 条 `partnership_requests`
 5. 2-3 条 `submissions`
+6. 1 条 `user_profiles`
+7. 2-3 条 `notifications`
+8. 2-3 条 `match_applications`
 
 这样前台已经能从 mock 切到第一版真实 CMS 数据。
 
@@ -100,6 +107,8 @@ NEXT_PUBLIC_DIRECTUS_URL=http://localhost:8055
 3. `/contents/[slug]`
 4. `/topics`
 5. `/requests`
+6. `/me`
+7. `/submit`
 
 ## 8. 接通成功的判定标准
 
@@ -109,4 +118,6 @@ NEXT_PUBLIC_DIRECTUS_URL=http://localhost:8055
 2. 内容列表和详情能读真实 `contents`
 3. 专题页能读真实 `topics`
 4. 合作页能读真实 `partnership_requests`
-5. CMS 挂掉时前台仍能安全回退 mock
+5. 用户中心能读真实账户工作台数据
+6. 投稿中心和合作申请流程至少能读真实 schema 或 singleton 配置
+7. CMS 挂掉时前台仍能安全回退 mock

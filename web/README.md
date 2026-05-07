@@ -20,6 +20,7 @@
 - 内容 / 事件 / 玩法 / 专题 / 对接 / 投稿 / 榜单 / 登录 / 用户中心 / 后台入口页面
 - 基础详情页演示
 - 品牌色、导航、页脚和平台级页面骨架组件
+- 本地 API 契约路由，用于承接账户工作台与流程蓝图
 
 当前 `web/` 还**不负责**：
 
@@ -62,6 +63,7 @@ web/
 ├─ src/
 │  ├─ app/
 │  │  ├─ page.tsx
+│  │  ├─ api/
 │  │  ├─ contents/
 │  │  ├─ events/
 │  │  ├─ playbooks/
@@ -112,6 +114,14 @@ web/
 - `/contents/[slug]`
 - `/requests/[slug]`
 - `/topics/[slug]`
+
+### 本地 API 契约
+
+- `/api/me/dashboard`
+- `/api/workflows/submission-center`
+- `/api/workflows/request-application`
+
+这些路由当前返回 service/mock 数据，后续可以平滑替换成真实后台接口。
 
 ## 当前主要组件
 
