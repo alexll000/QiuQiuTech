@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: qiqiutech-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: qiqiutech
+      POSTGRES_USER: directus
+      POSTGRES_PASSWORD: directus
+    ports:
+      - "5432:5432"
+    volumes:
+      - qiqiutech_pg_data:/var/lib/postgresql/data
+
+  directus:
+    image: directus/directus:11
+    container_name: qiqiutech-directus
+    restart: unless-stopped
+    ports:
+      - "8055:8055"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    volumes:
+      - ./uploads:/directus/uploads
+      - ./extensions:/directus/extensions
+
+volumes:
+  qiqiutech_pg_data:

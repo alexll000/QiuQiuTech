@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f3f5f8;
+  --foreground: #162b75;
+  --surface: #ffffff;
+  --surface-muted: #f7f8fb;
+  --surface-strong: #e9eef7;
+  --border: rgba(18, 36, 96, 0.1);
+  --copy: #223052;
+  --copy-soft: #6d7894;
+  --teal: #26a7a3;
+  --yellow: #ffca28;
+  --navy-strong: #162b75;
+  --wechat: #07c160;
+  --font-brand-sans:
+    "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
+    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-brand-mono:
+    "SFMono-Regular", "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-strong: var(--surface-strong);
+  --color-border: var(--border);
+  --color-copy: var(--copy);
+  --color-copy-soft: var(--copy-soft);
+  --color-teal: var(--teal);
+  --color-yellow: var(--yellow);
+  --color-navy-strong: var(--navy-strong);
+  --color-wechat: var(--wechat);
+  --font-sans: var(--font-brand-sans);
+  --font-mono: var(--font-brand-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--copy);
+  font-family: var(--font-brand-sans);
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(243, 245, 248, 1) 18%,
+    rgba(243, 245, 248, 1) 100%
+  );
+}
+
+a,
+button {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+::selection {
+  background: rgba(34, 167, 164, 0.2);
+  color: var(--navy-strong);
+}
+
+@keyframes fade-up-soft {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes iridescence-drift {
+  0% {
+    transform: translate3d(-2%, -1%, 0) rotate(-8deg) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, 2%, 0) rotate(-4deg) scale(1.04);
+  }
+  100% {
+    transform: translate3d(-2%, -1%, 0) rotate(-8deg) scale(1);
+  }
+}
+
+@keyframes iridescence-wave {
+  0% {
+    transform: translateX(-18%) translateY(0%) rotate(-12deg);
+    opacity: 0.64;
+  }
+  50% {
+    transform: translateX(12%) translateY(-4%) rotate(-8deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(-18%) translateY(0%) rotate(-12deg);
+    opacity: 0.64;
+  }
+}
+
+@keyframes marquee-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(38, 167, 163, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(38, 167, 163, 0);
+  }
+}
+
+.fade-up-soft {
+  animation: fade-up-soft 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+.marquee-track {
+  width: max-content;
+  min-width: 200%;
+  animation: marquee-x 22s linear infinite;
+}
+
+.pulse-soft {
+  animation: pulse-soft 3.2s ease-in-out infinite;
+}
+
+.iridescence-brand {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.iridescence-brand::before {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 22% 26%, rgba(38, 167, 163, 0.28), transparent 28%),
+    radial-gradient(circle at 78% 22%, rgba(255, 202, 40, 0.18), transparent 22%),
+    radial-gradient(circle at 72% 72%, rgba(110, 123, 235, 0.14), transparent 26%),
+    linear-gradient(135deg, rgba(240, 246, 255, 0.98), rgba(246, 248, 252, 0.94));
+  filter: blur(8px) saturate(118%);
+  animation: iridescence-drift 15s ease-in-out infinite;
+}
+
+.iridescence-brand::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: -1;
+  background:
+    linear-gradient(
+      112deg,
+      transparent 10%,
+      rgba(255, 255, 255, 0.56) 24%,
+      rgba(88, 120, 241, 0.1) 35%,
+      rgba(38, 167, 163, 0.18) 47%,
+      rgba(255, 202, 40, 0.12) 59%,
+      rgba(255, 255, 255, 0.5) 72%,
+      transparent 84%
+    );
+  transform: rotate(-10deg);
+  filter: blur(18px);
+  opacity: 0.82;
+  animation: iridescence-wave 18s ease-in-out infinite;
+}
