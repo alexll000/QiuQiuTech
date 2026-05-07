@@ -134,6 +134,24 @@ QiuQiuTech 不是开放社区，角色需要围绕：
 - Operator: review and change status
 - Admin: full access
 
+## `user_profiles`
+
+- Member: read own, update own
+- Operator: read, verify, update limited fields
+- Admin: full access
+
+## `saved_items`
+
+- Member: create, delete own, read own
+- Operator: no routine access needed
+- Admin: full access
+
+## `notifications`
+
+- Member: read own, mark own as read
+- Operator: create system notifications when needed
+- Admin: full access
+
 ## `placements`
 
 - Visitor / Member: no access

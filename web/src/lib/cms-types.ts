@@ -216,6 +216,26 @@ export interface CmsRequestApplicationGuide {
   safeguards: Array<{ title: string; note: string }>;
 }
 
+export interface ActionResult {
+  ok: boolean;
+  message: string;
+}
+
+export interface SaveDraftPayload {
+  submissionType: SubmissionType;
+  title: string;
+  summary?: string;
+  tags?: string[];
+  sourceUrl?: string;
+}
+
+export interface RequestApplicationPayload {
+  requestSlug: string;
+  intro: string;
+  portfolioUrl?: string;
+  contactPreference?: "public" | "apply_only" | "platform_match";
+}
+
 export interface CmsHomepagePayload {
   heroSpotlight?: {
     label?: string;
