@@ -82,10 +82,12 @@ web/
 │     ├─ site-data.ts
 │     ├─ content-service.ts
 │     ├─ account-service.ts
+│     ├─ action-service.ts
 │     ├─ cms-client.ts
 │     ├─ cms-types.ts
 │     ├─ form-blueprints.ts
 │     ├─ mock-account-service.ts
+│     ├─ mock-action-service.ts
 │     ├─ mock-workflow-service.ts
 │     ├─ workflow-service.ts
 │     └─ seo.ts
@@ -118,6 +120,10 @@ web/
 ### 本地 API 契约
 
 - `/api/me/dashboard`
+- `/api/me/saved-items/toggle`
+- `/api/me/notifications/read`
+- `/api/submissions/drafts`
+- `/api/requests/[slug]/apply`
 - `/api/workflows/submission-center`
 - `/api/workflows/request-application`
 
@@ -205,6 +211,22 @@ web/
 - 用户中心数据入口
 - 后续接真实登录态后的账户工作台数据聚合
 - CMS 不可用时回退到 mock 账户数据
+
+### `src/lib/action-service.ts`
+
+负责：
+
+- 收藏动作入口
+- 通知已读动作入口
+- 保存草稿动作入口
+- 申请合作动作入口
+
+### `src/lib/mock-action-service.ts`
+
+负责：
+
+- 当前动作接口的 mock 成功返回
+- 后续替换成真实后台逻辑前的本地占位
 
 ### `src/lib/mock-account-service.ts`
 
