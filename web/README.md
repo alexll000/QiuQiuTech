@@ -84,6 +84,8 @@ web/
 │     ├─ cms-types.ts
 │     ├─ form-blueprints.ts
 │     ├─ mock-account-service.ts
+│     ├─ mock-workflow-service.ts
+│     ├─ workflow-service.ts
 │     └─ seo.ts
 ├─ public/
 └─ package.json
@@ -200,6 +202,21 @@ web/
 
 - 当前用户中心演示数据
 - 投稿 / 收藏 / 合作申请 / 通知的 mock 结构
+
+### `src/lib/workflow-service.ts`
+
+负责：
+
+- 投稿中心结构化蓝图入口
+- 合作申请流程说明入口
+- 后续接真实表单 schema / 审核流 schema 的承接层
+
+### `src/lib/mock-workflow-service.ts`
+
+负责：
+
+- 投稿类型、投稿字段、审核状态、创作者权益的 mock 蓝图
+- 合作申请步骤与安全策略说明的 mock 蓝图
 
 ### `src/components/auth-modal.tsx`
 

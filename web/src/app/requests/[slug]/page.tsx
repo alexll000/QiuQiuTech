@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { SiteShell } from "@/components/site-shell";
 import { findRequestBySlug, listRequests } from "@/lib/content-service";
 import { buildMetadata } from "@/lib/seo";
+import { getRequestApplicationGuide } from "@/lib/workflow-service";
 
 export async function generateStaticParams() {
   const items = await listRequests();
@@ -41,6 +42,7 @@ export default async function RequestDetailPage({
 }) {
   const { slug } = await params;
   const item = await findRequestBySlug(slug);
+  const applicationGuide = await getRequestApplicationGuide();
 
   if (!item) notFound();
 
@@ -91,6 +93,20 @@ export default async function RequestDetailPage({
             </div>
           ) : null}
           <p className="mt-8 text-base leading-8 text-copy">{detailDescription}</p>
+
+          <div className="mt-8 grid gap-3 md:grid-cols-3">
+            {applicationGuide.steps.map((step, index) => (
+              <article
+                key={step.title}
+                className={`rounded-[22px] border px-4 py-4 ${
+                  index === 0 ? "border-[#d7e7ff] bg-[#f4f8ff]" : "border-border bg-[#fbfcff]"
+                }`}
+              >
+                <p className="text-sm font-semibold text-navy-strong">{step.title}</p>
+                <p className="mt-2 text-sm leading-7 text-copy-soft">{step.note}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <aside className="grid gap-4">
@@ -119,6 +135,23 @@ export default async function RequestDetailPage({
             </div>
             <div className="mt-3 rounded-full border border-border px-4 py-3 text-center text-sm font-medium text-navy-strong">
               相似需求推荐
+            </div>
+          </section>
+
+          <section className="rounded-[32px] border border-border bg-white p-6">
+            <p className="text-xs uppercase tracking-[0.16em] text-copy-soft">Safeguards</p>
+            <div className="mt-5 space-y-3">
+              {applicationGuide.safeguards.map((item, index) => (
+                <article
+                  key={item.title}
+                  className={`rounded-[22px] border px-4 py-4 ${
+                    index === 0 ? "border-[#d8efe9] bg-[#f4fbf8]" : "border-border bg-[#fbfcff]"
+                  }`}
+                >
+                  <p className="text-sm font-semibold text-navy-strong">{item.title}</p>
+                  <p className="mt-2 text-sm leading-7 text-copy-soft">{item.note}</p>
+                </article>
+              ))}
             </div>
           </section>
         </aside>
