@@ -102,4 +102,5 @@ curl -s "http://127.0.0.1:3000/api/trends/marketing-heat?window=24h" | head -c 2
 | `cms/README.md` | Directus、SQL、初始化脚本 |
 | `docs/features/marketing-heat-trend.md` | 营销热度功能与联调 |
 | `docs/features/marketing-heat-trend-module-inventory.md` | 该模块源码文件清单 |
+| `docs/features/marketing-heat-trend-tech-and-sources.md` | **技术栈、抓取配置索引与站点清单说明** |
 | `cms/seed/README.md` | 起始投稿数据（营销热度）导入说明 |

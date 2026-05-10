@@ -83,6 +83,13 @@
 - [directus-initialization-checklist.md](docs/directus-initialization-checklist.md)
 - [directus-collections-matrix.md](docs/directus-collections-matrix.md)
 
+### 营销热度趋势（首页模块）
+
+- [features/marketing-heat-trend-tech-and-sources.md](docs/features/marketing-heat-trend-tech-and-sources.md) — **技术栈、配置索引、抓取 URL 说明（Git 内单一索引）**
+- [features/marketing-heat-trend.md](docs/features/marketing-heat-trend.md) — 业务规则与联调
+- [features/marketing-heat-trend-module-inventory.md](docs/features/marketing-heat-trend-module-inventory.md) — 源码文件列表
+- [setup-from-scratch.md](docs/setup-from-scratch.md) — 换机 / Docker / 种子数据
+
 ### 历史阶段资料
 
 以下文档主要是前期讨论或旧阶段产物，**不能直接当成当前实现真值**：

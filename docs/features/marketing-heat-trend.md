@@ -4,11 +4,13 @@
 
 > 重要：这里的「热度」指 **营销内容平台的内容更新热度**（案例/观察/品牌动态等），不是舆情监测。
 
+**技术栈、配置文件索引与抓取 URL 完整清单**（单一索引）：请同步阅读 **[marketing-heat-trend-tech-and-sources.md](./marketing-heat-trend-tech-and-sources.md)**；抓取入口 URL 以 **`scripts/crawl/sources.marketing-platforms.txt`** 为准。
+
 ---
 
 ## 1. 目标与交付物
 
-- **数据源**：聚合“基础 6 个核心平台 + 扩展资讯源（addog 业内资讯目录）”
+- **数据源**：聚合“基础 6 个核心平台 + 扩展资讯源（addog 业内资讯目录）”（**完整 URL 列表见 `scripts/crawl/sources.marketing-platforms.txt`，勿仅用本节列举**）
   - SocialBeta：`https://socialbeta.com/`
   - 数英：`https://www.digitaling.com/`
   - 梅花网：`https://www.meihua.info/`

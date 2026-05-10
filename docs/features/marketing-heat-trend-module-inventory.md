@@ -49,6 +49,7 @@
 | 路径 | 说明 |
 |------|------|
 | `docs/features/marketing-heat-trend.md` | 功能说明、联调、故障排除、多 AI 协作约定 |
+| `docs/features/marketing-heat-trend-tech-and-sources.md` | **技术栈、配置文件索引、抓取站点清单说明（Git 权威索引）** |
 | `docs/setup-from-scratch.md` | 换机从零搭建（含 Docker 共用说明） |
 
 ## 自检接口
