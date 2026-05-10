@@ -89,6 +89,7 @@
 - [features/marketing-heat-trend.md](docs/features/marketing-heat-trend.md) — 业务规则与联调
 - [features/marketing-heat-trend-module-inventory.md](docs/features/marketing-heat-trend-module-inventory.md) — 源码文件列表
 - [setup-from-scratch.md](docs/setup-from-scratch.md) — 换机 / Docker / 种子数据
+- [migration-doc-self-check.md](docs/migration-doc-self-check.md) — **迁移/交付前文档自检清单（防漏项）**
 
 ### 历史阶段资料
 

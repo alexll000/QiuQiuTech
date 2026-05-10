@@ -29,7 +29,7 @@ QiuQiuTech 是一个面向品牌方、市场人、营销从业者、代理公司
    docker compose up -d
    ```
    Directus：<http://localhost:8055>。可与任意路径的前端工程**共用同一套 Docker**，只需前端 `.env.local` 指向同一地址。
-4. **（推荐）导入营销热度起始数据**：仓库自带 `cms/seed/submissions.seed.json`，在仓库根执行 `node scripts/seed/import-submissions-seed.mjs` —— 详见 [cms/seed/README.md](cms/seed/README.md)（可在配置好 Directus 鉴权 env 后导入，首页趋势图即有初始案例）。
+4. **（可选）导入营销热度起始数据**：仓库自带 `cms/seed/submissions.seed.json`，配置好 Directus 鉴权后可执行 `node scripts/seed/import-submissions-seed.mjs` —— 详见 [cms/seed/README.md](cms/seed/README.md)。**仅向数据库插入初始 `submissions` 行，不会把前端写成静态**；持续更新仍靠抓取或后台录入。不导入也可运行，但趋势可能较空。
 5. **更长步骤与排障**（换电脑、端口占用、营销热度无数据等）：[docs/setup-from-scratch.md](docs/setup-from-scratch.md)。
 6. **营销热度趋势**：业务文档 [docs/features/marketing-heat-trend.md](docs/features/marketing-heat-trend.md)；**技术栈 / 配置与数据源索引** [docs/features/marketing-heat-trend-tech-and-sources.md](docs/features/marketing-heat-trend-tech-and-sources.md)；源码清单 [docs/features/marketing-heat-trend-module-inventory.md](docs/features/marketing-heat-trend-module-inventory.md)。
 
