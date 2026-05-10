@@ -19,6 +19,7 @@ rsync -a --delete \
 
 - `docs/features/marketing-heat-trend-tech-and-sources.md`
 - `docs/features/marketing-heat-trend.md`
+- `docs/migration-doc-self-check.md`（交付前自检，防文档漏项）
 - `scripts/crawl/sources.marketing-platforms.txt`
 
 若在备份中附带 **`web/node_modules`**（可选），请注意跨系统可能需要重装依赖。
