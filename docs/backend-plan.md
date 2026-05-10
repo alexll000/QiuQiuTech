@@ -159,7 +159,18 @@ scripts/
 4. 搜索
 5. 提交流程 schema / 账户工作台接口
 
-## 7. 当前不做
+## 7. 当前前端已预留的动作接口壳层
+
+前端已经有这些本地 API 契约：
+
+- `/api/me/saved-items/toggle`
+- `/api/me/notifications/read`
+- `/api/submissions/drafts`
+- `/api/requests/[slug]/apply`
+
+后端正式接入时，优先保持这些路径语义和数据结构稳定，能减少前台返工。
+
+## 8. 当前不做
 
 - 复杂 IM
 - 商业化结算

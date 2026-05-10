@@ -1,41 +1,126 @@
 @import "tailwindcss";
 
+/* ========================================================
+   QiuQiuTech Design Token — 统一设计约束
+   SocialBeta 级高级感：克制、精致、一致
+   ======================================================== */
+
 :root {
-  --background: #f3f5f8;
-  --foreground: #162b75;
-  --surface: #ffffff;
+  /* --- 色彩系统 --- */
+  --background:    #f5f7fb;
+  --foreground:    #162b75;
+  --surface:       #ffffff;
   --surface-muted: #f7f8fb;
-  --surface-strong: #e9eef7;
-  --border: rgba(18, 36, 96, 0.1);
-  --copy: #223052;
-  --copy-soft: #6d7894;
-  --teal: #26a7a3;
-  --yellow: #ffca28;
-  --navy-strong: #162b75;
-  --wechat: #07c160;
-  --font-brand-sans:
-    "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
-    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-brand-mono:
-    "SFMono-Regular", "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --surface-deep:  #eef1f8;
+
+  --border:        rgba(18, 36, 96, 0.09);
+  --border-strong: rgba(18, 36, 96, 0.16);
+  --border-active: rgba(38, 167, 163, 0.5);
+
+  --copy:          #1e2d5a;
+  --copy-soft:     #6b7a9e;
+  --copy-muted:    #a0aac4;
+
+  /* 品牌主色 */
+  --navy:          #162b75;
+  --navy-deep:     #0e1e52;
+  --navy-hover:    #1d3a8f;
+  --teal:          #26a7a3;
+  --teal-soft:     #e6f5f4;
+  --teal-deep:     #1d8f8c;
+
+  /* 统一 Yellow（去重：原来有3种yellow/yellow变体） */
+  --yellow:        #ffca28;
+  --yellow-soft:    #fff8e6;
+
+  /* 交互状态 —— 风格 A：深色投影浮起（iOS 卡片感） */
+  --ring:          rgba(38, 167, 163, 0.28);
+  --shadow-sm:     0 1px 3px rgba(18, 36, 96, 0.10), 0 4px 12px rgba(18, 36, 96, 0.06);
+  --shadow-md:     0 2px 8px rgba(18, 36, 96, 0.12), 0 8px 24px rgba(18, 36, 96, 0.08);
+  --shadow-lg:     0 4px 16px rgba(18, 36, 96, 0.14), 0 16px 48px rgba(18, 36, 96, 0.10);
+  --shadow-xl:     0 8px 32px rgba(18, 36, 96, 0.16), 0 24px 72px rgba(18, 36, 96, 0.12);
+
+  /* --- 圆角系统（统一为3档，删掉原来8种） --- */
+  --radius-sm:     8px;
+  --radius-md:     12px;
+  --radius-lg:     16px;
+  --radius-xl:     20px;
+  --radius-2xl:    28px;
+  --radius-full:   9999px;
+
+  /* --- 字体 --- */
+  --font-brand:    "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                   "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* --- 间距基准（4px grid） --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* --- 动效 --- */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast:   150ms;
+  --duration-normal: 240ms;
+  --duration-slow:   400ms;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
+  /* 基础色彩 */
+  --color-background:    var(--background);
+  --color-foreground:    var(--foreground);
+  --color-surface:       var(--surface);
   --color-surface-muted: var(--surface-muted);
-  --color-surface-strong: var(--surface-strong);
-  --color-border: var(--border);
-  --color-copy: var(--copy);
-  --color-copy-soft: var(--copy-soft);
-  --color-teal: var(--teal);
-  --color-yellow: var(--yellow);
-  --color-navy-strong: var(--navy-strong);
-  --color-wechat: var(--wechat);
-  --font-sans: var(--font-brand-sans);
-  --font-mono: var(--font-brand-mono);
+  --color-surface-deep:  var(--surface-deep);
+
+  /* 语义色 */
+  --color-navy:          var(--navy);
+  --color-navy-deep:     var(--navy-deep);
+  --color-navy-hover:    var(--navy-hover);
+  --color-teal:          var(--teal);
+  --color-teal-soft:     var(--teal-soft);
+  --color-teal-deep:     var(--teal-deep);
+  --color-yellow:        var(--yellow);
+  --color-yellow-soft:   var(--yellow-soft);
+  --color-copy:          var(--copy);
+  --color-copy-soft:     var(--copy-soft);
+  --color-copy-muted:    var(--copy-muted);
+
+  /* 兼容旧 token */
+  --color-border:          var(--border);
+  --color-border-strong:   var(--border-strong);
+  --color-primary:         var(--navy);
+  --color-primary-foreground: #ffffff;
+  --color-secondary:       var(--surface-deep);
+  --color-secondary-foreground: var(--navy);
+  --color-accent:          var(--teal);
+  --color-accent-foreground: #ffffff;
+  --color-destructive:     #d43f5e;
+  --color-destructive-foreground: #ffffff;
+  --color-ring:            var(--ring);
+  --color-wechat:          #07c160;
+  --color-navy-strong:     var(--navy);
+
+  /* 圆角档位 */
+  --radius-sm:   var(--radius-sm);
+  --radius-md:   var(--radius-md);
+  --radius-lg:   var(--radius-lg);
+  --radius-xl:   var(--radius-xl);
+  --radius-2xl:  var(--radius-2xl);
+  --radius-full: var(--radius-full);
+
+  /* 阴影档位 — 风格 A：深色投影浮起 */
+  --shadow-sm:     0 1px 3px rgba(18, 36, 96, 0.10), 0 4px 12px rgba(18, 36, 96, 0.06);
+  --shadow-md:     0 2px 8px rgba(18, 36, 96, 0.12), 0 8px 24px rgba(18, 36, 96, 0.08);
+  --shadow-lg:     0 4px 16px rgba(18, 36, 96, 0.14), 0 16px 48px rgba(18, 36, 96, 0.10);
+  --shadow-xl:     0 8px 32px rgba(18, 36, 96, 0.16), 0 24px 72px rgba(18, 36, 96, 0.12);
+
+  --font-sans: var(--font-brand);
 }
 
 * {
@@ -49,28 +134,39 @@ html {
 body {
   background: var(--background);
   color: var(--copy);
-  font-family: var(--font-brand-sans);
+  font-family: var(--font-brand);
   background-image: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.82) 0%,
-    rgba(243, 245, 248, 1) 18%,
-    rgba(243, 245, 248, 1) 100%
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(245, 247, 251, 1) 20%,
+    rgba(245, 247, 251, 1) 100%
   );
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 }
 
 a,
 button {
   transition:
-    color 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease,
-    transform 180ms ease;
+    color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
 }
 
 ::selection {
-  background: rgba(34, 167, 164, 0.2);
-  color: var(--navy-strong);
+  background: rgba(38, 167, 163, 0.18);
+  color: var(--navy);
 }
 
 @keyframes fade-up-soft {
@@ -152,6 +248,82 @@ button {
   width: max-content;
   min-width: 200%;
   animation: marquee-x 22s linear infinite;
+}
+
+@keyframes heatPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 12px 2px rgba(255, 107, 107, 0.25);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes heatNumber {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+/* 轮播滑动动画 */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.search-panel-enter {
+  animation: search-panel-enter 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: top center;
+  will-change: transform, opacity;
+}
+
+@keyframes search-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-panel-enter {
+    animation: none;
+  }
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .pulse-soft {

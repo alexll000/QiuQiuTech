@@ -17,7 +17,7 @@ export default async function PlaybooksPage() {
 
   return (
     <SiteShell activePath="/playbooks">
-      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_20px_54px_rgba(22,43,117,0.05)] sm:px-8">
+      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_4px_16px_rgba(18,36,96,0.12),0_16px_48px_rgba(18,36,96,0.08)] sm:px-8">
         <div className="grid gap-6 xl:grid-cols-[0.94fr_1.06fr]">
           <div>
             <h1 className="text-4xl font-semibold tracking-tight text-navy-strong sm:text-[3.6rem] sm:leading-[1.04]">
@@ -55,7 +55,7 @@ export default async function PlaybooksPage() {
             <Link
               key={item.id}
               href={item.href}
-              className="group block rounded-[30px] border border-border bg-white p-6 shadow-[0_14px_40px_rgba(22,43,117,0.04)]"
+              className="group block rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)]"
             >
               <article className="flex h-full flex-col justify-between">
                 <div>

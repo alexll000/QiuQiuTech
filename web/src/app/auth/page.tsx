@@ -11,9 +11,9 @@ export const metadata = buildMetadata({
 
 export default function AuthPage() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(38,167,163,0.08),transparent_28%),linear-gradient(180deg,rgba(243,245,248,0.96),rgba(236,241,248,1))] px-4 py-6 sm:px-6 lg:px-8">
+    <main className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#edf2f8_0%,#e8eef6_100%)] px-4 py-6 sm:px-6 lg:px-8">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(38,167,163,0.16),transparent_24%),radial-gradient(circle_at_86%_18%,rgba(255,202,40,0.16),transparent_18%),radial-gradient(circle_at_72%_76%,rgba(22,43,117,0.12),transparent_24%)]" />
       <div className="mx-auto flex min-h-[calc(100vh-3rem)] max-w-[1520px] items-center justify-center">
-        <div className="absolute inset-0 bg-[rgba(11,18,46,0.46)]" />
         <AuthModal />
       </div>
     </main>

@@ -7,6 +7,7 @@ import {
   getRequestBySlug,
   getTopicBySlug,
 } from "@/lib/cms-client";
+import { getMarketingHeatTrend } from "@/lib/marketing-heat-trend";
 import type {
   CmsContentDetail,
   CmsContentSummary,
@@ -91,6 +92,27 @@ function deriveTrendSeries(contents: CmsContentSummary[], requests: CmsRequestSu
       }),
     };
   });
+}
+
+async function deriveMarketingHeatSeriesFromSubmissions() {
+  try {
+    const payload = await getMarketingHeatTrend({ window: "24h" });
+    // 即使暂时没有投稿（totalSubmissions=0），也保留 5 条分类折线的归一化结果，
+    // 避免首屏误判为「无数据」整张图被清空（此前会在 Directus 短暂空响应时误伤 SSR）。
+    return {
+      ok: true,
+      totalSubmissions: payload.totalSubmissions,
+      realtimeTrendSeries: payload.series,
+      trendKeywords: payload.hotTopics,
+    };
+  } catch {
+    return {
+      ok: false,
+      totalSubmissions: 0,
+      realtimeTrendSeries: [] as Array<{ label: string; color: string; values: number[] }>,
+      trendKeywords: [] as string[],
+    };
+  }
 }
 
 function deriveRealtimeEventsFeed(
@@ -194,6 +216,17 @@ function inferPlaybookType(item: CmsContentSummary) {
   if (names.some((tag) => tag.includes("传播") || tag.includes("话题"))) return "话题机制";
   if (names.some((tag) => tag.includes("联名") || tag.includes("IP"))) return "IP 联动";
   return item.contentType === "trend" ? "渠道打法" : "玩法拆解";
+}
+
+function normalizeSearchText(value?: string | null) {
+  return (value || "").trim().toLowerCase();
+}
+
+function includesQuery(fields: Array<string | undefined | null>, query: string) {
+  const normalizedQuery = normalizeSearchText(query);
+  if (!normalizedQuery) return false;
+
+  return fields.some((field) => normalizeSearchText(field).includes(normalizedQuery));
 }
 
 export async function listEventFeed() {
@@ -343,6 +376,67 @@ export async function listRequests(): Promise<CmsRequestSummary[]> {
   return getMockRequests();
 }
 
+export async function searchSite(query: string) {
+  const trimmedQuery = query.trim();
+
+  if (!trimmedQuery) {
+    return {
+      query: "",
+      total: 0,
+      contents: [] as CmsContentSummary[],
+      topics: [] as CmsTopicSummary[],
+      requests: [] as CmsRequestSummary[],
+    };
+  }
+
+  const [contents, topics, requests] = await Promise.all([
+    listContents(),
+    listTopics(),
+    listRequests(),
+  ]);
+
+  const matchedContents = contents.filter((item) =>
+    includesQuery(
+      [
+        item.title,
+        item.summary,
+        item.brandName,
+        item.sourceName,
+        item.industry?.name,
+        ...(item.tags || []).map((tag) => tag.name),
+      ],
+      trimmedQuery,
+    ),
+  );
+
+  const matchedTopics = topics.filter((item) =>
+    includesQuery([item.title, item.intro, item.topicType], trimmedQuery),
+  );
+
+  const matchedRequests = requests.filter((item) =>
+    includesQuery(
+      [
+        item.title,
+        item.summary,
+        item.city,
+        item.budgetRange,
+        item.requestType,
+        item.industry?.name,
+        ...(item.tags || []).map((tag) => tag.name),
+      ],
+      trimmedQuery,
+    ),
+  );
+
+  return {
+    query: trimmedQuery,
+    total: matchedContents.length + matchedTopics.length + matchedRequests.length,
+    contents: matchedContents,
+    topics: matchedTopics,
+    requests: matchedRequests,
+  };
+}
+
 export async function findRequestBySlug(slug: string) {
   if (CMS_ENABLED) {
     try {
@@ -362,6 +456,7 @@ export async function getHomepageData() {
   if (CMS_ENABLED) {
     try {
       const payload = await getHomepagePayload();
+      const heat = await deriveMarketingHeatSeriesFromSubmissions();
       return {
         ...payload,
         heroSpotlight: payload.heroSpotlight || deriveHeroSpotlight(contents),
@@ -372,7 +467,9 @@ export async function getHomepageData() {
         realtimeTrendSeries:
           payload.realtimeTrendSeries?.length
             ? payload.realtimeTrendSeries
-            : deriveTrendSeries(contents, requests),
+            : heat.ok
+              ? heat.realtimeTrendSeries
+              : [],
         realtimeEventsFeed:
           payload.realtimeEventsFeed?.length
             ? payload.realtimeEventsFeed
@@ -386,7 +483,9 @@ export async function getHomepageData() {
         trendKeywords:
           payload.trendKeywords?.length
             ? payload.trendKeywords
-            : deriveHotTags(contents, requests, 8),
+            : heat.ok
+              ? heat.trendKeywords
+              : [],
       };
     } catch {
       const payload = await getMockHomepageData();

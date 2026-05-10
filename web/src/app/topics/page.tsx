@@ -16,7 +16,7 @@ export default async function TopicsPage() {
 
   return (
     <SiteShell activePath="/topics">
-      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_20px_54px_rgba(22,43,117,0.05)] sm:px-8">
+      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_4px_16px_rgba(18,36,96,0.12),0_16px_48px_rgba(18,36,96,0.08)] sm:px-8">
         <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
           <div>
             <h1 className="text-4xl font-semibold tracking-tight text-navy-strong sm:text-[3.6rem] sm:leading-[1.04]">
@@ -27,7 +27,7 @@ export default async function TopicsPage() {
             </p>
           </div>
 
-          <article className="rounded-[30px] border border-border bg-[linear-gradient(135deg,#0f245b_0%,#15357e_44%,#21b0a9_100%)] p-6 text-white shadow-[0_18px_44px_rgba(22,43,117,0.16)] sm:p-7">
+          <article className="rounded-[30px] border border-border bg-[linear-gradient(135deg,#0f245b_0%,#15357e_44%,#21b0a9_100%)] p-6 text-white shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)] sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
               Topic Spotlight
             </p>
@@ -64,7 +64,7 @@ export default async function TopicsPage() {
             <Link
               key={topic.slug}
               href={`/topics/${topic.slug}`}
-              className="group block rounded-[30px] border border-border bg-white p-6 shadow-[0_14px_40px_rgba(22,43,117,0.04)]"
+              className="group block rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)]"
             >
               <article className="flex h-full flex-col justify-between">
                 <div>

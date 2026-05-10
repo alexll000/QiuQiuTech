@@ -32,10 +32,14 @@ export function buildMetadata({
   image?: string;
   noIndex?: boolean;
 }): Metadata {
-  const fullTitle = title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE;
+  const fullTitle = !title
+    ? DEFAULT_TITLE
+    : title.includes(DEFAULT_TITLE)
+      ? title
+      : `${title} | ${DEFAULT_TITLE}`;
   const resolvedDescription = description || DEFAULT_DESCRIPTION;
   const canonicalUrl = path ? `${SITE_URL}${path}` : SITE_URL;
-  const ogImage = image || `${SITE_URL}/qiuqiutech-header-logo.png`;
+  const ogImage = image || `${SITE_URL}/qiuqiutech-brand-lockup.png`;
 
   return {
     title: fullTitle,

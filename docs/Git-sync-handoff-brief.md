@@ -1,6 +1,6 @@
 # Git Sync Handoff Brief
 
-最后更新：2026-05-07
+最后更新：2026-05-09 12:40 (UTC+8)
 
 ## 用途
 
@@ -8,13 +8,21 @@
 
 目标不是只让 AI 帮忙 push 代码，而是让它在每次同步 Git / GitHub 时，都把项目的真实开发状态、下一步计划和接手信息一起维护好。
 
+补充：
+
+当前前端体验开发统一走：
+
+- `QiuQiuTech Frontend Experience Workbench`
+
+这意味着后续 AI 在同步 Git 时，不只要同步代码和 UI，还要同步页面结构、状态设计、CTA 主次和前端体验收口的真实进展。
+
 ## 项目基础信息
 
 - 项目名：`QiuQiuTech`
 - 当前 GitHub 仓库：`alexll000/QiuQiuTech`
 - 当前主分支：`main`
 - 当前仓库根目录：
-  `/Users/stonework/Downloads/Trae/codeX/QiuQiuTech`
+  `$QIQIUTECH_ROOT`
 
 ## 你接手这个项目时的核心任务
 
@@ -53,9 +61,9 @@
    - 不该同步：`node_modules`、`.next`、缓存、系统垃圾文件
    - 需要谨慎处理：私有配置、密钥、本地运行数据
 4. 更新文档：
-   - [README.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/README.md)
-   - [docs/current-build-status.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/docs/current-build-status.md)
-   - [docs/ai-handoff.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/docs/ai-handoff.md)
+   - [README.md](README.md)
+   - [docs/current-build-status.md](docs/current-build-status.md)
+   - [docs/ai-handoff.md](docs/ai-handoff.md)
    - 必要时更新相关专题文档
 5. 提交前做一次完整性检查：
    - 本地真实文件和 Git 已跟踪文件是否存在关键差异
@@ -94,7 +102,7 @@
 
 ## 当前项目状态摘要
 
-截至 2026-05-07，当前仓库已经具备：
+截至 2026-05-09，当前仓库已经具备：
 
 1. `web/` 前台工程主框架
 2. 首页、内容、事件、玩法、专题、合作、投稿、榜单、登录、用户中心、后台入口骨架
@@ -102,6 +110,8 @@
 4. Directus 接入预留层
 5. AI 交接文档
 6. 本地 API 契约路由
+7. 最小审核台与抓取报告面板
+8. `QiuQiuTech Frontend Experience Workbench`
 
 已验证：
 
@@ -110,28 +120,29 @@
 
 未完成重点：
 
-1. Directus 真实接通
-2. 投稿真实表单
-3. 合作申请真实流程
-4. 用户中心真实账户数据
-5. 抓取与导入流程
+1. 继续补首页与关键页面的前端体验收口
+2. Directus 真实读链路继续替换 fallback
+3. 投稿真实表单补上传与审核状态查询
+4. 用户中心真实账户数据继续接通
+5. 抓取报告升级为持久化任务中心
 
 ## 另一个 AI 接手时先读哪些文件
 
-1. [README.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/README.md)
-2. [docs/ai-handoff.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/docs/ai-handoff.md)
-3. [docs/current-build-status.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/docs/current-build-status.md)
-4. [docs/Git-sync-handoff-brief.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/docs/Git-sync-handoff-brief.md)
-5. [docs/directus-initialization-checklist.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/docs/directus-initialization-checklist.md)
-6. [web/README.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/web/README.md)
-7. [cms/README.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/cms/README.md)
+1. [README.md](README.md)
+2. [docs/Latest-conversation-brief.md](docs/Latest-conversation-brief.md)
+3. [docs/ai-handoff.md](docs/ai-handoff.md)
+4. [docs/current-build-status.md](docs/current-build-status.md)
+5. [docs/Git-sync-handoff-brief.md](docs/Git-sync-handoff-brief.md)
+6. [docs/directus-initialization-checklist.md](docs/directus-initialization-checklist.md)
+7. [web/README.md](web/README.md)
+8. [cms/README.md](cms/README.md)
 
 ## 另一台电脑继续开发的最低启动方式
 
 前台：
 
 ```bash
-cd /Users/stonework/Downloads/Trae/codeX/QiuQiuTech/web
+cd web
 npm install
 cp .env.example .env.local
 npm run dev
@@ -140,7 +151,7 @@ npm run dev
 CMS：
 
 ```bash
-cd /Users/stonework/Downloads/Trae/codeX/QiuQiuTech/cms
+cd cms
 cp .env.example .env
 docker compose up -d
 ```

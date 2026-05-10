@@ -1,8 +1,17 @@
 # macOS
 .DS_Store
 
-# root-level local tooling
+# root-level local tooling / sync noise (do not ship to collaborators)
 .workbuddy/
+.cache/
+GEOFlow/
+codeX/
+Icon?
+_archive/
+tmp/
+.codebuddy/
+data.db
+2026-05-09-16-43-30-remove-bar.png
 
 # web
 web/.git.local-backup/

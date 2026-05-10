@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialBeta风格搜索框</title>
+<style>
+/* ===== 重置基础 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f5f5f5; }
+
+/* ===== Header ===== */
+header {
+  background: #fff;
+  border-bottom: 1px solid #E9ECEF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+header nav {
+  max-width: 1040px;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+/* 顶部右侧按钮组 */
+header nav ul.r {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+header nav ul.r li {
+  padding: 0 10px 0 0;
+}
+
+/* ===== SocialBeta风格：胶囊搜索按钮 ===== */
+.search-btn {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 0 0 20px;
+  border-radius: 30px;
+  background: #EFEFEF url('data:image/svg+xml;utf8,%3Csvg%20width%3D%2280px%22%20height%3D%2280px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M9.5%2017c1.71%200%203.287-.573%204.55-1.537l4.743%204.744a1%201%200%200%200%201.414-1.414l-4.744-4.744A7.5%207.5%200%201%200%209.5%2017zM15%209.5a5.5%205.5%200%201%201-11%200%205.5%205.5%200%200%201%2011%200z%22%20fill%3D%22%23999999%22%2F%3E%3C%2Fsvg%3E') no-repeat 14px;
+  background-size: 20px 20px;
+  border: none;
+  color: #AAA;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.search-btn:hover {
+  background-color: #e0e0e0;
+  color: #666;
+}
+
+/* ===== 弹窗遮罩层 ===== */
+.search-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.7);
+  z-index: 19891014;
+  display: none;
+  animation: overlayFadeIn 0.15s ease;
+}
+.search-overlay.active {
+  display: block;
+}
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== SocialBeta风格：搜索弹窗卡片 ===== */
+.search-modal {
+  position: relative;
+  display: none;
+  background-color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0,0,0,.1);
+  overflow: hidden;
+  max-width: 600px;
+  width: 90%;
+  margin: 100px auto;
+}
+.search-modal.active {
+  display: block;
+  animation: modalScaleIn 0.2s ease;
+}
+
+/* 缩放入场动画 */
+@keyframes modalScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== 弹窗内部结构 ===== */
+.search-modal .modal-header {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.search-modal .close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  background: url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M19%206.41L17.59%205%2012%2010.59%206.41%205%205%206.41%2010.59%2012%205%2017.59%206.41%2019%2012%2013.41%2017.59%2019%2019%2017.59%2013.41%2012z%22%20fill%3D%22%23999%22%2F%3E%3C%2Fsvg%3E') no-repeat center;
+  background-size: 20px;
+  transition: transform 0.2s;
+}
+.search-modal .close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.search-modal .search-form {
+  padding: 14px;
+  position: relative;
+}
+
+/* ===== SocialBeta风格：搜索框 ===== */
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  font-size: 16px;
+  width: 100%;
+  height: 46px;
+  padding: 8px 120px 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-input:focus {
+  border-color: #1875d1;
+  box-shadow: 0 0 0 3px rgba(24,117,209,.1);
+}
+.search-input::placeholder {
+  color: #aaa;
+}
+
+/* ===== SocialBeta风格：搜索按钮（嵌入输入框右侧） ===== */
+.search-submit-btn {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  padding: 8px 24px;
+  border: none;
+  width: 48px;
+  height: 38px;
+  background: #333 url('data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M9.5%2017c1.71%200%203.287-.573%204.55-1.537l4.743%204.744a1%201%200%200%200%201.414-1.414l-4.744-4.744A7.5%207.5%200%201%200%209.5%2017zM15%209.5a5.5%205.5%200%201%201-11%200%205.5%205.5%200%200%201%2011%200z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3C%2Fsvg%3E') no-repeat center;
+  background-size: 22px 22px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  overflow: hidden;
+  text-indent: -999px;
+}
+.search-submit-btn:hover {
+  background-color: #444;
+}
+
+/* ===== 热门搜索标签 ===== */
+.hot-search {
+  padding: 14px;
+  margin-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+.hot-search-title {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 12px;
+  font-weight: normal;
+}
+.hot-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hot-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #f5f5f5;
+  color: #666;
+  border-radius: 20px;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.hot-tag:hover {
+  background: #1875d1;
+  color: #fff;
+}
+
+/* ===== 登录按钮（SocialBeta风格） ===== */
+.login-btn {
+  cursor: pointer;
+  width: 42px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 30px;
+  font-size: 14px;
+  color: #2588F4;
+  border: 1px solid #BCDAFC;
+  background: #fff;
+  padding: 0 12px;
+  transition: all 0.2s;
+}
+.login-btn:hover {
+  background: #e8f0fe;
+}
+
+/* ===== Logo ===== */
+.logo {
+  width: 150px;
+  height: 60px;
+  background: linear-gradient(135deg, #1875d1 0%, #0d47a1 100%);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+/* ===== 提示消息 ===== */
+.toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,.8);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 999999;
+  display: none;
+  animation: toastIn 0.3s ease;
+}
+.toast.show {
+  display: block;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ===== Demo页面内容 ===== */
+.demo-content {
+  padding-top: 100px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+}
+.demo-content h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+.demo-content p {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <nav>
+    <div class="logo">MyBrand</div>
+    <ul class="r">
+      <!-- SocialBeta风格：胶囊搜索按钮 -->
+      <li>
+        <button class="search-btn" onclick="openSearch()">搜索</button>
+      </li>
+      <li>
+        <button class="login-btn">登录</button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- SocialBeta风格：弹窗遮罩 -->
+<div class="search-overlay" id="searchOverlay" onclick="closeSearch()"></div>
+
+<!-- SocialBeta风格：搜索弹窗卡片 -->
+<div class="search-modal" id="searchModal">
+  <div class="modal-header">
+    搜索
+    <div class="close-btn" onclick="closeSearch()"></div>
+  </div>
+  <div class="search-form">
+    <div class="search-input-wrapper">
+      <!-- SocialBeta风格：搜索框 + 嵌入式搜索按钮 -->
+      <input 
+        type="text" 
+        name="word" 
+        class="search-input" 
+        placeholder="请输入搜索品牌案例关键词" 
+        id="searchInput"
+        onkeydown="if(event.key=='Enter'){doSearch()}"
+      >
+      <button type="button" class="search-submit-btn" onclick="doSearch()">搜索</button>
+    </div>
+  </div>
+  <div class="hot-search">
+    <div class="hot-search-title">热门搜索</div>
+    <div class="hot-tags">
+      <a href="#" class="hot-tag" onclick="quickSearch('新品营销')"># 新品营销</a>
+      <a href="#" class="hot-tag" onclick="quickSearch('节日营销')"># 节日营销</a>
+      <a href="#" class="hot-tag" onclick="quickSearch('跨界营销')"># 跨界营销</a>
+      <a href="#" class="hot-tag" onclick="quickSearch('广告片')"># 广告片</a>
+      <a href="#" class="hot-tag" onclick="quickSearch('女性营销')"># 女性营销</a>
+      <a href="#" class="hot-tag" onclick="quickSearch('ESG营销')"># ESG营销</a>
+      <a href="#" class="hot-tag" onclick="quickSearch('小红书')"># 小红书</a>
+      <a href="#" class="hot-tag" onclick="quickSearch('AI')"># AI</a>
+    </div>
+  </div>
+</div>
+
+<!-- Toast提示 -->
+<div class="toast" id="toast"></div>
+
+<!-- Demo内容 -->
+<div class="demo-content">
+  <h1>SocialBeta风格搜索框演示</h1>
+  <p>✅ 胶囊搜索按钮 - 60×30px，圆角30px，左侧搜索图标</p>
+  <p>✅ 弹窗入场动画 - 0.2s缩放动画 (scale .5 → 1)</p>
+  <p>✅ 半透明遮罩 - rgba(0,0,0,.7)</p>
+  <p>✅ 嵌入式搜索按钮 - 右侧深色背景+放大镜图标</p>
+  <p>✅ 热门标签 - 胶囊样式，悬停变蓝色</p>
+  <p>✅ 关闭按钮 - 旋转动画</p>
+  <p>✅ 输入框聚焦 - 蓝色边框+阴影</p>
+  <p>✅ Toast提示 - 空内容提交时显示</p>
+  <p style="margin-top:30px; color:#999;">点击右上角「搜索」按钮查看效果</p>
+</div>
+
+<script>
+// 打开搜索弹窗
+function openSearch() {
+  document.getElementById('searchOverlay').classList.add('active');
+  document.getElementById('searchModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  // 自动聚焦输入框
+  setTimeout(() => {
+    document.getElementById('searchInput').focus();
+  }, 100);
+}
+
+// 关闭搜索弹窗
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('active');
+  document.getElementById('searchModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// 执行搜索
+function doSearch() {
+  const input = document.getElementById('searchInput');
+  const keyword = input.value.trim();
+  
+  if (!keyword) {
+    showToast('搜索内容不能为空');
+    input.focus();
+    return;
+  }
+  
+  showToast('搜索: ' + keyword);
+  // 实际项目中这里跳转到搜索结果页
+  // window.location.href = '/search/' + encodeURIComponent(keyword);
+}
+
+// 快速搜索（点击标签）
+function quickSearch(keyword) {
+  event.preventDefault();
+  document.getElementById('searchInput').value = keyword;
+  doSearch();
+}
+
+// 显示Toast提示
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2000);
+}
+
+// ESC键关闭弹窗
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeSearch();
+  }
+});
+</script>
+
+</body>
+</html>

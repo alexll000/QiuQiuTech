@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>时间筛选样式对比</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: #fafafa; padding: 40px; }
+
+    .demo-section {
+      margin-bottom: 48px;
+    }
+
+    .demo-label {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* 当前样式（参考） */
+    .current-style {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    .current-btn {
+      padding: 8px 16px;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+      color: #333;
+      font-size: 13px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .current-btn.active {
+      background: #222;
+      color: #fff;
+      border-color: #222;
+    }
+
+    .current-refresh {
+      margin-left: auto;
+      padding: 8px 12px;
+      border: 1px solid #e0e0e0;
+      background: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* 方案一：Pill 胶囊风格 */
+    .style-1 {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      padding: 12px 16px;
+      border-radius: 50px;
+      border: 1px solid #eee;
+    }
+
+    .style-1 .time-btn {
+      padding: 8px 20px;
+      border: none;
+      background: transparent;
+      color: #666;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: all 0.2s;
+    }
+
+    .style-1 .time-btn:hover {
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .style-1 .time-btn.active {
+      background: #222;
+      color: #fff;
+    }
+
+    .style-1 .divider {
+      width: 1px;
+      height: 20px;
+      background: #eee;
+      margin: 0 8px;
+    }
+
+    .style-1 .refresh-btn {
+      padding: 8px 14px;
+      border: none;
+      background: transparent;
+      color: #999;
+      font-size: 13px;
+      cursor: pointer;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+
+    .style-1 .refresh-btn:hover {
+      background: #f5f5f5;
+      color: #666;
+    }
+
+    /* 方案二：文字链接风格 */
+    .style-2 {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+    }
+
+    .style-2 .time-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .style-2 .time-btn {
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      color: #999;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .style-2 .time-btn:hover {
+      color: #333;
+    }
+
+    .style-2 .time-btn.active {
+      color: #222;
+      font-weight: 500;
+    }
+
+    .style-2 .time-btn.active::after {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 2px;
+      background: #222;
+      margin: 4px auto 0;
+      border-radius: 1px;
+    }
+
+    .style-2 .refresh-btn {
+      margin-left: auto;
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      color: #999;
+      font-size: 13px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .style-2 .refresh-btn:hover {
+      color: #333;
+    }
+
+    /* 方案三：极简描边 */
+    .style-3 {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .style-3 .time-btn {
+      padding: 10px 24px;
+      border: none;
+      border-right: 1px solid #e5e5e5;
+      background: #fff;
+      color: #666;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .style-3 .time-btn:last-child {
+      border-right: none;
+    }
+
+    .style-3 .time-btn:hover {
+      background: #fafafa;
+      color: #333;
+    }
+
+    .style-3 .time-btn.active {
+      background: #222;
+      color: #fff;
+    }
+
+    .style-3 .refresh-btn {
+      padding: 10px 16px;
+      border: none;
+      background: transparent;
+      color: #999;
+      font-size: 14px;
+      cursor: pointer;
+      margin-left: 12px;
+      transition: color 0.2s;
+    }
+
+    .style-3 .refresh-btn:hover {
+      color: #333;
+    }
+
+    /* 方案四：紧凑 pill + 描边 */
+    .style-4 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #eee;
+    }
+
+    .style-4 .time-btn {
+      padding: 6px 16px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #666;
+      font-size: 13px;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .style-4 .time-btn:hover {
+      border-color: #ddd;
+      color: #333;
+    }
+
+    .style-4 .time-btn.active {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #1a1a1a;
+    }
+
+    .style-4 .refresh-btn {
+      margin-left: auto;
+      padding: 6px 12px;
+      border: 1px solid #eee;
+      background: transparent;
+      color: #999;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .style-4 .refresh-btn:hover {
+      border-color: #ccc;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-section">
+    <div class="demo-label">当前样式</div>
+    <div class="current-style">
+      <button class="current-btn active">24h</button>
+      <button class="current-btn">7d</button>
+      <button class="current-btn">30d</button>
+      <button class="current-refresh">↻ 刷新</button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-label">方案一：Pill 胶囊风格</div>
+    <div class="style-1">
+      <button class="time-btn active">24h</button>
+      <button class="time-btn">7d</button>
+      <button class="time-btn">30d</button>
+      <div class="divider"></div>
+      <button class="refresh-btn">↻</button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-label">方案二：文字链接 + 下划线</div>
+    <div class="style-2">
+      <div class="time-group">
+        <button class="time-btn active">24小时</button>
+        <button class="time-btn">7天</button>
+        <button class="time-btn">30天</button>
+      </div>
+      <button class="refresh-btn">↻ 刷新</button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-label">方案三：紧凑描边</div>
+    <div class="style-3">
+      <button class="time-btn active">24h</button>
+      <button class="time-btn">7d</button>
+      <button class="time-btn">30d</button>
+      <button class="refresh-btn">↻</button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-label">方案四：精简 pill</div>
+    <div class="style-4">
+      <button class="time-btn active">24h</button>
+      <button class="time-btn">7d</button>
+      <button class="time-btn">30d</button>
+      <button class="refresh-btn">↻ 刷新</button>
+    </div>
+  </div>
+</body>
+</html>

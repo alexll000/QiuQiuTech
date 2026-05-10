@@ -219,6 +219,8 @@ export interface CmsRequestApplicationGuide {
 export interface ActionResult {
   ok: boolean;
   message: string;
+  source?: "directus" | "fallback";
+  reason?: string;
 }
 
 export interface SaveDraftPayload {
@@ -234,6 +236,32 @@ export interface RequestApplicationPayload {
   intro: string;
   portfolioUrl?: string;
   contactPreference?: "public" | "apply_only" | "platform_match";
+}
+
+export interface RequestDraftPayload {
+  title: string;
+  requestType: RequestType;
+  summary: string;
+  city?: string;
+  budgetRange?: string;
+  contactPolicy?: "public" | "apply_only" | "platform_match";
+  targetType?: string;
+}
+
+export interface ToggleSavedItemPayload {
+  targetType: "content" | "topic" | "request";
+  targetId: string;
+  title?: string;
+  href?: string;
+}
+
+export interface UpdateProfilePayload {
+  displayName: string;
+  roleType: UserRoleType;
+  bio?: string;
+  city?: string;
+  companyName?: string;
+  contactPolicy?: "public" | "apply_only" | "platform_match";
 }
 
 export interface CmsHomepagePayload {

@@ -4,6 +4,7 @@ import { SiteShell } from "@/components/site-shell";
 import { findRequestBySlug, listRequests } from "@/lib/content-service";
 import { buildMetadata } from "@/lib/seo";
 import { getRequestApplicationGuide } from "@/lib/workflow-service";
+import { RequestApplicationForm } from "@/components/request-application-form";
 
 export async function generateStaticParams() {
   const items = await listRequests();
@@ -130,9 +131,7 @@ export default async function RequestDetailPage({
           </section>
 
           <section className="rounded-[32px] border border-border bg-white p-6">
-            <div className="rounded-full bg-navy-strong px-4 py-3 text-center text-sm font-medium text-white">
-              申请合作
-            </div>
+            <RequestApplicationForm slug={slug} />
             <div className="mt-3 rounded-full border border-border px-4 py-3 text-center text-sm font-medium text-navy-strong">
               相似需求推荐
             </div>

@@ -18,7 +18,7 @@ export default async function EventsPage() {
 
   return (
     <SiteShell activePath="/events">
-      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_20px_54px_rgba(22,43,117,0.05)] sm:px-8">
+      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_4px_16px_rgba(18,36,96,0.12),0_16px_48px_rgba(18,36,96,0.08)] sm:px-8">
         <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
           <div>
             <h1 className="text-4xl font-semibold tracking-tight text-navy-strong sm:text-[3.6rem] sm:leading-[1.04]">
@@ -33,7 +33,7 @@ export default async function EventsPage() {
             </div>
           </div>
 
-          <article className="overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,#0f245b_0%,#15357e_46%,#1ca0b0_100%)] p-6 text-white shadow-[0_18px_44px_rgba(22,43,117,0.16)] sm:p-7">
+          <article className="overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,#0f245b_0%,#15357e_46%,#1ca0b0_100%)] p-6 text-white shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)] sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
               Event Spotlight
             </p>
@@ -71,12 +71,12 @@ export default async function EventsPage() {
               <Link
                 key={item.id}
                 href={item.href}
-                className={`block rounded-[28px] border p-5 shadow-[0_14px_36px_rgba(22,43,117,0.04)] ${
+                className={`block rounded-[28px] border p-5 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] ${
                   index === 0 ? "border-[#d7e7ff] bg-[#f4f8ff]" : "border-border bg-white"
                 }`}
               >
                 <article className="grid gap-4 md:grid-cols-[auto_1fr_auto] md:items-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#21b0a9_0%,#1a8fe8_100%)] text-lg font-semibold text-white shadow-[0_10px_22px_rgba(37,111,230,0.18)]">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#21b0a9_0%,#1a8fe8_100%)] text-lg font-semibold text-white shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)]">
                     {index + 1}
                   </div>
                   <div>
@@ -119,7 +119,7 @@ export default async function EventsPage() {
           </div>
 
           <div className="space-y-4">
-            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_14px_38px_rgba(22,43,117,0.05)] sm:p-7">
+            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
               <h2 className="text-2xl font-semibold tracking-tight text-navy-strong">事件处理流</h2>
               <div className="mt-6 space-y-3">
                 {[
@@ -140,7 +140,7 @@ export default async function EventsPage() {
               </div>
             </section>
 
-            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_14px_38px_rgba(22,43,117,0.05)] sm:p-7">
+            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
               <h2 className="text-2xl font-semibold tracking-tight text-navy-strong">当前观察重点</h2>
               <div className="mt-5 flex flex-wrap gap-3">
                 {events.flatMap((item) => item.tags).slice(0, 8).map((tag, index) => (

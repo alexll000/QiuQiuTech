@@ -48,11 +48,11 @@ function PosterArt({ shape, palette }: { shape: string; palette: string }) {
     return (
       <div className={`relative h-full w-full overflow-hidden ${palette}`}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.28),transparent_35%)]" />
-        <div className="absolute bottom-5 left-6 h-44 w-24 rounded-[40px_40px_18px_18px] bg-white shadow-[0_30px_60px_rgba(8,18,44,0.32)]">
+        <div className="absolute bottom-5 left-6 h-44 w-24 rounded-[40px_40px_18px_18px] bg-white shadow-[0_8px_32px_rgba(18,36,96,0.22),0_24px_72px_rgba(18,36,96,0.16)]">
           <div className="absolute left-1/2 top-4 h-7 w-16 -translate-x-1/2 rounded-full bg-[#f5f6fa]" />
           <div className="absolute left-1/2 top-[72px] h-20 w-16 -translate-x-1/2 rounded-[50%] border-[9px] border-[#123475] border-t-transparent" />
         </div>
-        <div className="absolute bottom-5 right-6 h-48 w-40 rounded-[20px] border border-white/12 bg-white/8 shadow-[0_30px_60px_rgba(8,18,44,0.22)]" />
+        <div className="absolute bottom-5 right-6 h-48 w-40 rounded-[20px] border border-white/12 bg-white/8 shadow-[0_8px_32px_rgba(18,36,96,0.16),0_24px_72px_rgba(18,36,96,0.10)]" />
       </div>
     );
   }
@@ -61,7 +61,7 @@ function PosterArt({ shape, palette }: { shape: string; palette: string }) {
     return (
       <div className={`relative h-full w-full overflow-hidden ${palette}`}>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0),rgba(181,222,169,0.6))]" />
-        <div className="absolute bottom-8 left-1/2 h-48 w-24 -translate-x-1/2 rounded-[26px] bg-[linear-gradient(180deg,#fdfdfc_0%,#f2f4ef_100%)] shadow-[0_20px_42px_rgba(40,75,34,0.16)]">
+        <div className="absolute bottom-8 left-1/2 h-48 w-24 -translate-x-1/2 rounded-[26px] bg-[linear-gradient(180deg,#fdfdfc_0%,#f2f4ef_100%)] shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)]">
           <div className="absolute left-1/2 top-[-10px] h-8 w-10 -translate-x-1/2 rounded-t-[12px] rounded-b-[6px] bg-[#1e2329]" />
           <div className="absolute left-1/2 top-[88px] h-16 w-16 -translate-x-1/2 rounded-full border border-[#d5e7cb]" />
         </div>
@@ -75,7 +75,7 @@ function PosterArt({ shape, palette }: { shape: string; palette: string }) {
     return (
       <div className={`relative h-full w-full overflow-hidden ${palette}`}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_26%,rgba(255,255,255,0.36),transparent_22%)]" />
-        <div className="absolute bottom-8 left-1/2 h-40 w-24 -translate-x-1/2 rounded-[12px] bg-[linear-gradient(180deg,#51301f_0%,#1f130d_100%)] shadow-[0_22px_44px_rgba(76,41,18,0.22)]">
+        <div className="absolute bottom-8 left-1/2 h-40 w-24 -translate-x-1/2 rounded-[12px] bg-[linear-gradient(180deg,#51301f_0%,#1f130d_100%)] shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)]">
           <div className="absolute left-1/2 top-[-26px] h-12 w-12 -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,#d0b280_0%,#8f6736_100%)]" />
           <div className="absolute left-1/2 top-3 h-20 w-14 -translate-x-1/2 rounded-[8px] border border-white/12" />
         </div>
@@ -86,7 +86,7 @@ function PosterArt({ shape, palette }: { shape: string; palette: string }) {
   return (
     <div className={`relative h-full w-full overflow-hidden ${palette}`}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_24%)]" />
-      <div className="absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-[36px] border border-white/14 bg-white/10 shadow-[0_24px_44px_rgba(8,18,44,0.22)]" />
+      <div className="absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-[36px] border border-white/14 bg-white/10 shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)]" />
       <div className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-[28px] border border-white/18 bg-white/8" />
     </div>
   );
@@ -97,7 +97,7 @@ export default async function ContentsPage() {
 
   return (
     <SiteShell activePath="/contents">
-      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_20px_54px_rgba(22,43,117,0.05)] sm:px-8">
+      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_4px_16px_rgba(18,36,96,0.12),0_16px_48px_rgba(18,36,96,0.08)] sm:px-8">
         <div className="max-w-3xl">
           <h1 className="text-4xl font-semibold tracking-tight text-navy-strong sm:text-[3.6rem] sm:leading-[1.04]">
             内容中心
@@ -116,7 +116,7 @@ export default async function ContentsPage() {
             <Link
               key={item.slug}
               href={`/contents/${item.slug}`}
-              className="group grid overflow-hidden rounded-[30px] border border-border bg-white shadow-[0_14px_40px_rgba(22,43,117,0.04)] transition-transform duration-200 hover:-translate-y-0.5"
+              className="group grid overflow-hidden rounded-[30px] border border-border bg-white shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] transition-transform duration-200 hover:-translate-y-0.5"
             >
               <article className="grid min-h-[320px] lg:grid-cols-[1.18fr_0.82fr]">
                 <div className="relative min-h-[220px]">
@@ -128,7 +128,7 @@ export default async function ContentsPage() {
 
                 <div className="flex flex-col justify-between px-6 py-6 sm:px-7">
                   <div>
-                    <span className="inline-flex rounded-full bg-[linear-gradient(135deg,#23b4ac_0%,#1c8fe8_100%)] px-3 py-1 text-sm font-medium text-white shadow-[0_8px_18px_rgba(33,161,187,0.22)]">
+                    <span className="inline-flex rounded-full bg-[linear-gradient(135deg,#23b4ac_0%,#1c8fe8_100%)] px-3 py-1 text-sm font-medium text-white shadow-[0_2px_8px_rgba(33,161,187,0.16),0_8px_24px_rgba(33,161,187,0.12)]">
                       {contentTypeLabels[item.contentType]}
                     </span>
                     <h2 className="mt-5 text-[2rem] font-semibold tracking-tight text-navy-strong group-hover:text-[#1d8eb6]">
@@ -165,7 +165,7 @@ export default async function ContentsPage() {
               key={item}
               className={`flex h-11 min-w-11 items-center justify-center rounded-full border px-4 ${
                 index === 0
-                  ? "border-transparent bg-[linear-gradient(135deg,#21b0a9_0%,#1a8fe8_100%)] font-semibold text-white shadow-[0_12px_26px_rgba(37,111,230,0.18)]"
+                  ? "border-transparent bg-[linear-gradient(135deg,#21b0a9_0%,#1a8fe8_100%)] font-semibold text-white shadow-[0_4px_16px_rgba(37,111,230,0.14),0_16px_48px_rgba(37,111,230,0.10)]"
                   : "border-border bg-white text-navy-strong"
               }`}
             >

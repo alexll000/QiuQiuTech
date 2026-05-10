@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import { buildMetadata } from "@/lib/seo";
 import { getSubmissionCenterData } from "@/lib/workflow-service";
+import { SubmissionDraftForm } from "@/components/submission-draft-form";
 
 export const metadata = buildMetadata({
   title: "我要投稿",
@@ -46,7 +47,7 @@ export default async function SubmitPage() {
 
   return (
     <SiteShell activePath="/submit">
-      <section className="rounded-[34px] border border-border bg-white px-6 py-8 shadow-[0_20px_54px_rgba(22,43,117,0.05)] sm:px-8">
+      <section className="rounded-[34px] border border-border bg-white px-6 py-8 shadow-[0_4px_16px_rgba(18,36,96,0.12),0_16px_48px_rgba(18,36,96,0.08)] sm:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="text-4xl font-semibold tracking-tight text-navy-strong sm:text-[4rem] sm:leading-[1.04]">
             加入 <span className="text-teal">QiuQiuTech</span> 创作者社区
@@ -60,7 +61,7 @@ export default async function SubmitPage() {
           {submissionCenter.submissionTypes.map((item) => (
             <article
               key={item.title}
-              className="rounded-[30px] border border-border bg-white px-6 py-7 shadow-[0_14px_36px_rgba(22,43,117,0.04)]"
+              className="rounded-[30px] border border-border bg-white px-6 py-7 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)]"
             >
               <div className="flex items-center gap-6">
                 <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[radial-gradient(circle,rgba(38,167,163,0.08),rgba(38,167,163,0.02))]">
@@ -73,7 +74,7 @@ export default async function SubmitPage() {
                   <p className="mt-3 text-base leading-8 text-copy-soft">{item.description}</p>
                   <Link
                     href="/auth"
-                    className="mt-5 inline-flex rounded-[12px] bg-[#ffca1f] px-5 py-3 text-base font-semibold text-navy-strong shadow-[0_12px_24px_rgba(255,202,31,0.2)]"
+                    className="mt-5 inline-flex rounded-[12px] bg-[#ffca1f] px-5 py-3 text-base font-semibold text-navy-strong shadow-[0_4px_16px_rgba(255,202,31,0.14),0_16px_48px_rgba(255,202,31,0.10)]"
                   >
                     立即投稿
                   </Link>
@@ -112,7 +113,7 @@ export default async function SubmitPage() {
         </section>
 
         <section className="mt-12 grid gap-6 xl:grid-cols-[1.06fr_0.94fr]">
-          <div className="rounded-[32px] border border-border bg-white p-6 shadow-[0_14px_38px_rgba(22,43,117,0.04)] sm:p-7">
+          <div className="rounded-[32px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-copy-soft">
@@ -127,21 +128,8 @@ export default async function SubmitPage() {
               </span>
             </div>
 
-            <div className="mt-7 grid gap-4 md:grid-cols-2">
-              {submissionCenter.formFields.map((field) => (
-                <article
-                  key={field.label}
-                  className={`rounded-[24px] border px-4 py-4 ${
-                    field.highlighted ? "border-[#d7e7ff] bg-[#f4f8ff]" : "border-border bg-[#fbfcff]"
-                  }`}
-                >
-                  <p className="text-xs uppercase tracking-[0.16em] text-copy-soft">
-                    {field.label}
-                    {field.required ? " · 必填" : ""}
-                  </p>
-                  <p className="mt-3 text-sm font-medium text-navy-strong">{field.value}</p>
-                </article>
-              ))}
+            <div className="mt-7">
+              <SubmissionDraftForm submissionCenter={submissionCenter} hideHeader />
             </div>
 
             <div className="mt-4 rounded-[24px] border border-border bg-[#fbfcff] p-5">
@@ -154,13 +142,10 @@ export default async function SubmitPage() {
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 href="/auth"
-                className="rounded-full bg-navy-strong px-5 py-3 text-sm font-medium text-white shadow-[0_14px_28px_rgba(22,43,117,0.18)]"
+                className="rounded-full bg-navy-strong px-5 py-3 text-sm font-medium text-white shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)]"
               >
                 登录后投稿
               </Link>
-              <button className="rounded-full border border-border bg-white px-5 py-3 text-sm font-medium text-navy-strong">
-                保存草稿
-              </button>
               <button className="rounded-full border border-[#d8efe9] bg-[#f4fbf8] px-5 py-3 text-sm font-medium text-teal">
                 查看投稿规范
               </button>
@@ -168,7 +153,7 @@ export default async function SubmitPage() {
           </div>
 
           <div className="grid gap-6">
-            <section className="rounded-[32px] border border-border bg-white p-6 shadow-[0_14px_38px_rgba(22,43,117,0.04)] sm:p-7">
+            <section className="rounded-[32px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
               <div className="text-center">
                 <h2 className="text-4xl font-semibold tracking-tight text-navy-strong">创作者权益</h2>
                 <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-teal" />
@@ -193,7 +178,7 @@ export default async function SubmitPage() {
               </div>
             </section>
 
-            <section className="rounded-[32px] border border-border bg-[linear-gradient(135deg,#162b75_0%,#203b93_58%,#1f8cb4_100%)] p-6 text-white shadow-[0_18px_42px_rgba(22,43,117,0.18)] sm:p-7">
+            <section className="rounded-[32px] border border-border bg-[linear-gradient(135deg,#162b75_0%,#203b93_58%,#1f8cb4_100%)] p-6 text-white shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)] sm:p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
                 Review Status
               </p>

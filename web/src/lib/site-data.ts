@@ -5,7 +5,6 @@ export const navItems = [
   { label: "玩法拆解", href: "/playbooks" },
   { label: "专题策展", href: "/topics" },
   { label: "合作对接", href: "/requests" },
-  { label: "我要投稿", href: "/submit" },
   { label: "榜单趋势", href: "/rankings" },
 ];
 
@@ -78,25 +77,28 @@ export const selectedCaseCards = [
   {
     title: "观夏「昆仑煮雪」香水上市传播",
     tag: "新品上市",
+    category: "品牌营销",
     summary: "东方气韵与场景叙事并行，打造新品心智认知。",
     byline: "by 观夏 to summer",
-    href: "/contents/mcdonalds-peony-building-campaign",
+    href: "/contents/guanxia-kunlun-zhuxue",
     palette: "from-[#273f77] via-[#3d6f84] to-[#d3e6d9]",
   },
   {
     title: "理肤泉 B5 修复霜全新升级",
     tag: "新品上市",
+    category: "短视频",
     summary: "科学成分可视化沟通，驱动口碑与复购双增长。",
     byline: "by La Roche-Posay 理肤泉",
-    href: "/contents/weekly-marketing-cases-observation",
+    href: "/contents/laroche-b5-upgrade",
     palette: "from-[#d8ecff] via-[#f2f8ff] to-[#a9d4ff]",
   },
   {
     title: "NB x Uma Wang 限量联名系列",
     tag: "联名合作",
+    category: "社交媒体",
     summary: "文化共鸣与设计共创，塑造高端联名新范式。",
     byline: "by New Balance",
-    href: "/contents/mcdonalds-peony-building-campaign",
+    href: "/contents/nb-uma-wang-collab",
     palette: "from-[#cabca7] via-[#f3ece4] to-[#ddd6cb]",
   },
 ];
@@ -381,7 +383,7 @@ export const adminOverview = [
 ];
 
 export const adminNavItems = [
-  "Dashboard",
+  "总览",
   "内容管理",
   "抓取导入",
   "投稿审核",
@@ -411,14 +413,14 @@ export const meOverviewCards = [
 export const contentDetails = [
   {
     slug: "mcdonalds-peony-building-campaign",
-    title: "麦当劳爆改“牡丹楼”式的在地化话题案例",
+    title: "麦当劳爆改「牡丹楼」式的在地化话题案例",
     summary:
       "把地标、城市话题与品牌传播动作结合，形成可被持续讨论的营销事件。",
     type: "案例",
     source: "SocialBeta",
     brand: "麦当劳",
     industry: "餐饮",
-    tags: ["Campaign", "在地化传播", "品牌动态"],
+    tags: ["Campaign", "在地化传播", "品牌动态", "话题营销", "联名"],
     body: [
       "这类案例适合成为营销内容详情页的主干样本，因为它同时具备品牌名、传播动作、话题切口与结构化标签。",
       "详情页应支持封面、摘要、结构化信息、推荐阅读、收藏与合作 CTA，避免退化成普通博客正文页。",
@@ -434,10 +436,138 @@ export const contentDetails = [
     source: "QiuQiuTech",
     brand: "栏目型内容",
     industry: "营销平台",
-    tags: ["趋势观察", "精选案例", "周更栏目"],
+    tags: ["趋势观察", "精选案例", "周更栏目", "品牌动态"],
     body: [
       "趋势观察类内容适合连接多个案例，帮助用户快速把握一周内容脉络。",
       "这类详情页既要有编辑观点，也要保留结构化标签和关联内容，方便继续跳转浏览。",
+    ],
+  },
+  {
+    slug: "luckin-coffee-x-crying-mercenario",
+    title: "瑞幸咖啡 × 哭喊中心联名营销案例",
+    summary:
+      "新消费品牌与国际潮牌的跨界联名，通过限定周边和快闪活动引爆社交媒体。",
+    type: "案例",
+    source: "SocialBeta",
+    brand: "瑞幸咖啡",
+    industry: "咖啡茶饮",
+    tags: ["跨界联名", "新消费", "快闪活动", "限定周边", "联名"],
+    body: [
+      "瑞幸咖啡与哭喊中心的联名合作是一次成功的品牌跨界案例。",
+      "通过限量周边和快闪店的形式，制造稀缺感和话题性。",
+      "在社交媒体上引发大量用户自发传播，形成破圈效应。",
+    ],
+  },
+  {
+    slug: "xiaohongshu-yearly-report-2026",
+    title: "小红书2026年度营销趋势报告",
+    summary:
+      "深度解读小红书平台年度营销趋势，为品牌新一年营销布局提供参考。",
+    type: "报告解读",
+    source: "QiuQiuTech",
+    brand: "小红书",
+    industry: "社交媒体",
+    tags: ["趋势报告", "平台营销", "内容营销", "KOL合作"],
+    body: [
+      "本报告基于小红书平台全年数据，分析营销趋势变化。",
+      "涵盖内容形式、话题热度、用户行为等多个维度。",
+      "为品牌在小红书平台的营销策略提供数据支撑。",
+    ],
+  },
+  {
+    slug: "pop-mart-blind-box-marketing",
+    title: "泡泡玛特盲盒营销玩法拆解",
+    summary:
+      "解析泡泡玛特如何通过盲盒机制创造用户粘性和收藏欲望。",
+    type: "案例",
+    source: "SocialBeta",
+    brand: "泡泡玛特",
+    industry: "潮玩",
+    tags: ["盲盒营销", "用户增长", "玩法拆解", "IP运营", "收藏经济"],
+    body: [
+      "泡泡玛特的盲盒模式创造了独特的用户心理体验。",
+      "通过限定款和隐藏款的稀缺性设计，激发用户重复购买。",
+      "形成了一套完整的IP开发和营销闭环。",
+    ],
+  },
+  {
+    slug: "hongjiu-wine-brand-refresh",
+    title: "红酒品牌年轻化营销升级案例",
+    summary:
+      "传统红酒品牌通过内容营销和社交媒体运营实现品牌年轻化转型。",
+    type: "案例",
+    source: "SocialBeta",
+    brand: "某红酒品牌",
+    industry: "酒类",
+    tags: ["品牌升级", "内容营销", "年轻化", "社交媒体", "女性营销"],
+    body: [
+      "传统酒类品牌面临年轻消费者流失的挑战。",
+      "通过内容营销、场景化种草、KOL合作等方式触达年轻用户。",
+      "成功实现品牌形象的年轻化转型。",
+    ],
+  },
+  {
+    slug: "national-day-campaign-analysis",
+    title: "国庆节点品牌营销Campaign分析",
+    summary:
+      "盘点国庆期间各大品牌的营销动作，分析节点营销的成功要素。",
+    type: "趋势观察",
+    source: "QiuQiuTech",
+    brand: "多品牌",
+    industry: "通用",
+    tags: ["节点营销", "国庆营销", "Campaign", "节日营销", "品牌动态"],
+    body: [
+      "国庆作为重要节点，是品牌营销的重要战场。",
+      "本分析从内容创意、话题设置、传播路径等维度拆解各品牌Campaign。",
+      "总结节点营销的共性规律和差异化策略。",
+    ],
+  },
+  {
+    slug: "esg-marketing-trend",
+    title: "ESG营销成为品牌新赛道",
+    summary:
+      "环保、社会责任成为品牌营销新方向，解析ESG营销的玩法与案例。",
+    type: "趋势观察",
+    source: "SocialBeta",
+    brand: "行业趋势",
+    industry: "通用",
+    tags: ["ESG营销", "社会责任", "可持续发展", "品牌升级", "趋势观察"],
+    body: [
+      "ESG营销正在成为品牌建设的新方向。",
+      "消费者对品牌的环保和社会责任要求越来越高。",
+      "成功的ESG营销需要真实行动支撑，而非空洞口号。",
+    ],
+  },
+  {
+    slug: "ai-generated-content-marketing",
+    title: "AI赋能营销内容创作实战",
+    summary:
+      "探讨AI工具如何提升营销内容生产效率，以及人机协作的最佳实践。",
+    type: "深度特辑",
+    source: "QiuQiuTech",
+    brand: "技术赋能",
+    industry: "营销科技",
+    tags: ["AI营销", "内容创作", "技术工具", "效率提升", "AIGC"],
+    body: [
+      "AI工具正在深刻改变营销内容生产的方式。",
+      "从文案、图片到视频，AI可以大幅提升创作效率。",
+      "但人机协作仍然关键，AI是工具而非替代者。",
+    ],
+  },
+  {
+    slug: "female-marketing-beauty-brand",
+    title: "美妆品牌女性营销策略解析",
+    summary:
+      "从品牌价值观到内容表达，解析美妆品牌如何与女性消费者建立情感连接。",
+    type: "案例",
+    source: "SocialBeta",
+    brand: "美妆品牌",
+    industry: "美妆护肤",
+    tags: ["女性营销", "情感营销", "品牌价值观", "内容营销", "联名"],
+    body: [
+      "女性消费者是美妆品牌的核心受众。",
+      "成功的女性营销需要真正理解女性消费者需求和情感。",
+      "从价值观表达到内容共创，建立深层次的品牌连接。",
     ],
   },
 ];
@@ -453,7 +583,7 @@ export const requestDetails = [
     budget: "预算待沟通",
     cycle: "6 月启动",
     contactMode: "apply_only",
-    tags: ["线下快闪", "联名营销", "内容传播"],
+    tags: ["线下快闪", "联名营销", "内容传播", "品牌合作"],
     summary: "希望寻找能够共同完成线下联名快闪与传播策划的合作团队。",
     description:
       "需求详情页需要完整展示发布者、合作类型、目标对象、行业、城市、周期与联系方式模式，并支持申请合作按钮和相似需求推荐。",
@@ -468,10 +598,70 @@ export const requestDetails = [
     budget: "Q3 节点项目",
     cycle: "季度合作",
     contactMode: "public",
-    tags: ["节点营销", "品牌联名", "新消费"],
+    tags: ["节点营销", "品牌联名", "新消费", "节日营销"],
     summary: "围绕节日节点做品牌联名合作，希望寻找调性匹配的品牌方。",
     description:
       "合作需求详情页后续可接申请表单、作品链接、联系资料与状态流转。",
+  },
+  {
+    slug: "beauty-brand-looking-for-kol",
+    title: "美妆品牌寻找小红书KOL合作",
+    requestType: "品牌找营销人",
+    targetType: "KOL / 达人",
+    industry: "美妆护肤",
+    city: "全国",
+    budget: "单次合作 5-20 万",
+    cycle: "长期合作",
+    contactMode: "apply_only",
+    tags: ["KOL合作", "小红书", "种草营销", "女性营销"],
+    summary: "寻找有美妆护肤垂类经验的KOL进行产品种草和品牌推广合作。",
+    description:
+      "需要有真实粉丝基础和优质内容产出能力的美妆类KOL合作。",
+  },
+  {
+    slug: "tech-company-looking-for-content-team",
+    title: "科技公司寻找内容营销代理团队",
+    requestType: "品牌找营销人",
+    targetType: "代理公司",
+    industry: "科技",
+    city: "北京",
+    budget: "季度预算 30-50 万",
+    cycle: "年度合作",
+    contactMode: "platform_match",
+    tags: ["内容营销", "品牌传播", "科技营销", "年度合作"],
+    summary: "寻找有科技行业经验的营销团队，负责品牌内容策划与执行。",
+    description:
+      "需要团队有科技行业背景，懂技术能讲故事。",
+  },
+  {
+    slug: "coffee-brand-looking-for-brand-collab",
+    title: "咖啡品牌寻找调性匹配的品牌做联名",
+    requestType: "品牌找品牌",
+    targetType: "品牌方",
+    industry: "咖啡茶饮",
+    city: "全国",
+    budget: "单次项目 20-50 万",
+    cycle: "单次合作",
+    contactMode: "public",
+    tags: ["品牌联名", "咖啡", "跨界营销", "快闪活动"],
+    summary: "寻找调性匹配的品牌进行联名合作，共同打造话题营销事件。",
+    description:
+      "希望合作伙伴有清晰的品牌定位和年轻化的用户群体。",
+  },
+  {
+    slug: "fashion-brand-looking-for-agency",
+    title: "时尚品牌寻找全案营销代理",
+    requestType: "品牌找营销人",
+    targetType: "代理公司",
+    industry: "时尚",
+    city: "上海",
+    budget: "年度预算 100-200 万",
+    cycle: "年度合作",
+    contactMode: "apply_only",
+    tags: ["时尚营销", "全案代理", "品牌升级", "女性营销"],
+    summary: "寻找有时尚行业经验的代理公司，负责品牌全年营销规划与执行。",
+    description:
+      "需要有时尚行业资源整合能力和高端品牌服务经验的团队。",
   },
 ];
 
@@ -480,12 +670,36 @@ export const topicDetails = [
     slug: "festival-marketing-topic",
     title: "节点营销专题",
     intro:
-      "围绕节日节点、品牌动作、传播玩法与合作机会做结构化汇总，是专题策展里的高频主题。",
+      "围绕节日节点、品牌动作、传播玩法与合作机会做结构化汇总，是专题策展里的高频主题。涵盖春节、国庆、双十一等重要节点的营销案例与策略。",
   },
   {
     slug: "quarterly-recap-topic",
     title: "季度盘点",
     intro:
-      "按季度对内容、趋势、案例和热门玩法做回顾，形成平台长期内容资产。",
+      "按季度对内容、趋势、案例和热门玩法做回顾，形成平台长期内容资产。帮助品牌把握行业脉搏，洞察市场变化。",
+  },
+  {
+    slug: "collab-marketing-topic",
+    title: "跨界联名专题",
+    intro:
+      "汇聚品牌跨界联名合作案例，解析联名营销的创意玩法与合作机会。从快闪店到限定周边，从话题制造到销量转化，全面拆解联名营销方法论。",
+  },
+  {
+    slug: "female-marketing-topic",
+    title: "女性营销专题",
+    intro:
+      "围绕女性消费者的品牌营销策略与案例分析。从价值观表达到内容共创，探讨如何与女性用户建立深层次的情感连接。",
+  },
+  {
+    slug: "esg-marketing-topic",
+    title: "ESG营销专题",
+    intro:
+      "环保、社会责任与公司治理成为品牌建设新方向。收录ESG营销案例，探讨品牌如何践行社会责任并传递品牌价值。",
+  },
+  {
+    slug: "ai-marketing-topic",
+    title: "AI营销专题",
+    intro:
+      "人工智能正在重塑营销行业。从AI生成内容到智能投放，从数据分析到用户洞察，探讨AI在营销领域的应用与实践。",
   },
 ];

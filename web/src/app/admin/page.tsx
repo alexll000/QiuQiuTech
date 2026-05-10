@@ -1,5 +1,8 @@
 import { buildMetadata } from "@/lib/seo";
 import { adminNavItems, adminOverview } from "@/lib/site-data";
+import { LatestConversationBriefDialog } from "@/components/latest-conversation-brief-dialog";
+import { AdminReviewQueue } from "@/components/admin-review-queue";
+import { AdminCrawlOpsPanel } from "@/components/admin-crawl-ops-panel";
 
 export const metadata = buildMetadata({
   title: "后台运营台",
@@ -13,11 +16,11 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-[#eef3fb] text-copy">
       <div className="mx-auto max-w-[1460px] px-4 py-6 sm:px-6 lg:px-8">
-        <header className="rounded-[32px] border border-border bg-white px-6 py-6 shadow-[0_18px_52px_rgba(22,43,117,0.06)] sm:px-8">
+        <header className="rounded-[32px] border border-border bg-white px-6 py-6 shadow-[0_4px_16px_rgba(18,36,96,0.12),0_16px_48px_rgba(18,36,96,0.08)] sm:px-8">
           <div className="grid gap-5 xl:grid-cols-[1.02fr_0.98fr] xl:items-end">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-copy-soft">
-                Operations Dashboard
+                后台运营总览
               </p>
               <h1 className="mt-3 text-4xl font-semibold tracking-tight text-navy-strong sm:text-[3.2rem] sm:leading-[1.06]">
                 后台把审核、发布、抓取、专题推荐与展示位管理收进同一套运营框架。
@@ -48,9 +51,9 @@ export default function AdminPage() {
         </header>
 
         <main className="mt-5 grid gap-5 xl:grid-cols-[280px_1fr]">
-          <aside className="rounded-[30px] border border-border bg-white p-6 shadow-[0_12px_34px_rgba(22,43,117,0.04)]">
+          <aside className="rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)]">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-copy-soft">
-              Navigation
+              后台导航
             </p>
             <div className="mt-6 space-y-3">
               {adminNavItems.map((item, index) => (
@@ -58,7 +61,7 @@ export default function AdminPage() {
                   key={item}
                   className={`rounded-[20px] px-4 py-4 text-sm font-medium ${
                     index === 0
-                      ? "bg-navy-strong text-white shadow-[0_12px_24px_rgba(22,43,117,0.16)]"
+                      ? "bg-navy-strong text-white shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)]"
                       : "border border-border bg-[#fbfcff] text-navy-strong"
                   }`}
                 >
@@ -73,7 +76,7 @@ export default function AdminPage() {
               {adminOverview.map((item) => (
                 <article
                   key={item.label}
-                  className="rounded-[26px] border border-border bg-white p-5 shadow-[0_12px_32px_rgba(22,43,117,0.04)]"
+                  className="rounded-[26px] border border-border bg-white p-5 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)]"
                 >
                   <p className="text-xs uppercase tracking-[0.16em] text-copy-soft">{item.label}</p>
                   <p className="mt-3 text-4xl font-semibold tracking-tight text-navy-strong">{item.value}</p>
@@ -83,87 +86,17 @@ export default function AdminPage() {
             </section>
 
             <section className="grid gap-5 xl:grid-cols-[1.04fr_0.96fr]">
-              <article className="rounded-[30px] border border-border bg-white p-6 shadow-[0_12px_34px_rgba(22,43,117,0.04)] sm:p-7">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-copy-soft">
-                      Review Queue
-                    </p>
-                    <h2 className="mt-3 text-2xl font-semibold tracking-tight text-navy-strong">
-                      当前重点处理队列
-                    </h2>
-                  </div>
-                  <span className="rounded-full bg-[#f4f8ff] px-3 py-1 text-xs font-medium text-navy-strong">
-                    实时刷新
-                  </span>
-                </div>
+              <AdminReviewQueue />
 
-                <div className="mt-6 space-y-3">
-                  {[
-                    ["投稿内容", "品牌节点 campaign 案例投稿，待审核素材与结构字段。", "待审核"],
-                    ["抓取内容", "来源解析成功，但需要补齐品牌标签与摘要。", "待补全"],
-                    ["合作卡", "品牌合作需求需确认身份与联系方式策略。", "需校验"],
-                    ["专题配置", "首页专题位与专题详情页内容需要统一编排与排序。", "待发布"],
-                  ].map(([title, description, status], index) => (
-                    <article
-                      key={title}
-                      className={`rounded-[24px] border px-4 py-4 ${
-                        index === 0 ? "border-[#d7e7ff] bg-[#f4f8ff]" : "border-border bg-[#fbfcff]"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-3">
-                        <p className="text-sm font-semibold text-navy-strong">{title}</p>
-                        <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-copy-soft">
-                          {status}
-                        </span>
-                      </div>
-                      <p className="mt-2 text-sm leading-7 text-copy-soft">{description}</p>
-                    </article>
-                  ))}
-                </div>
-              </article>
-
-              <article className="rounded-[30px] border border-border bg-white p-6 shadow-[0_12px_34px_rgba(22,43,117,0.04)] sm:p-7">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-copy-soft">
-                    Source Intake
-                  </p>
-                  <h2 className="mt-3 text-2xl font-semibold tracking-tight text-navy-strong">
-                    抓取与导入状态
-                  </h2>
-                </div>
-
-                <div className="mt-6 space-y-3">
-                  {[
-                    ["链接抓取", "运营输入单条链接后，立即解析标题、摘要、正文与封面。", "可执行"],
-                    ["定时抓取", "按来源站点、RSS 或 API 周期抓取，进入待审核池。", "运行中"],
-                    ["结构补全", "为抓取内容补行业、标签、品牌与专题关联。", "人工确认"],
-                  ].map(([title, note, status], index) => (
-                    <article
-                      key={title}
-                      className={`rounded-[24px] border px-4 py-4 ${
-                        index === 1 ? "border-[#d8efe9] bg-[#f4fbf8]" : "border-border bg-[#fbfcff]"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-3">
-                        <p className="text-sm font-semibold text-navy-strong">{title}</p>
-                        <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-copy-soft">
-                          {status}
-                        </span>
-                      </div>
-                      <p className="mt-2 text-sm leading-7 text-copy-soft">{note}</p>
-                    </article>
-                  ))}
-                </div>
-              </article>
+              <AdminCrawlOpsPanel />
             </section>
 
             <section className="grid gap-5 xl:grid-cols-[1fr_1fr]">
-              <article className="rounded-[30px] border border-border bg-white p-6 shadow-[0_12px_34px_rgba(22,43,117,0.04)] sm:p-7">
+              <article className="rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-copy-soft">
-                      Placement Ops
+                      展示位运营
                     </p>
                     <h2 className="mt-3 text-2xl font-semibold tracking-tight text-navy-strong">
                       首页与专题展示位
@@ -189,10 +122,10 @@ export default function AdminPage() {
                 </div>
               </article>
 
-              <article className="rounded-[30px] border border-border bg-white p-6 shadow-[0_12px_34px_rgba(22,43,117,0.04)] sm:p-7">
+              <article className="rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-copy-soft">
-                    Operator Notes
+                    运营备注
                   </p>
                   <h2 className="mt-3 text-2xl font-semibold tracking-tight text-navy-strong">
                     当前运营要求
@@ -215,6 +148,10 @@ export default function AdminPage() {
                       {item}
                     </div>
                   ))}
+                </div>
+
+                <div className="mt-5">
+                  <LatestConversationBriefDialog />
                 </div>
               </article>
             </section>

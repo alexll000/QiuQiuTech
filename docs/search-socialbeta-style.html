@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialBeta风格搜索</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: #fff; padding: 40px; }
+
+    .search-container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .search-input::placeholder {
+      color: #999;
+    }
+
+    .search-btn {
+      padding: 12px 24px;
+      background: #222;
+      color: #fff;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .search-btn:hover {
+      background: #444;
+    }
+
+    .hot-search {
+      margin-top: 24px;
+    }
+
+    .hot-title {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    .hot-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hot-tag {
+      padding: 6px 14px;
+      background: #f5f5f5;
+      color: #333;
+      font-size: 13px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .hot-tag:hover {
+      background: #eee;
+    }
+
+    .hot-tag::before {
+      content: '#';
+      color: #999;
+      margin-right: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" class="search-input" placeholder="搜索案例、资讯、素材...">
+      <button class="search-btn">搜索</button>
+    </div>
+
+    <div class="hot-search">
+      <div class="hot-title">热门搜索</div>
+      <div class="hot-tags">
+        <span class="hot-tag">品牌营销</span>
+        <span class="hot-tag">抖音</span>
+        <span class="hot-tag">小红书</span>
+        <span class="hot-tag">跨界联名</span>
+        <span class="hot-tag">品牌升级</span>
+        <span class="hot-tag">代言人</span>
+        <span class="hot-tag">Campaign</span>
+        <span class="hot-tag">整合营销</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

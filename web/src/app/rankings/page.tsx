@@ -15,7 +15,7 @@ export default async function RankingsPage() {
 
   return (
     <SiteShell activePath="/rankings">
-      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_20px_54px_rgba(22,43,117,0.05)] sm:px-8">
+      <section className="rounded-[34px] border border-border bg-white px-6 py-7 shadow-[0_4px_16px_rgba(18,36,96,0.12),0_16px_48px_rgba(18,36,96,0.08)] sm:px-8">
         <div className="grid gap-6 xl:grid-cols-[0.92fr_1.08fr]">
           <div>
             <h1 className="text-4xl font-semibold tracking-tight text-navy-strong sm:text-[3.6rem] sm:leading-[1.04]">
@@ -47,7 +47,7 @@ export default async function RankingsPage() {
 
         <div className="mt-8 grid gap-5 xl:grid-cols-[0.88fr_1.12fr]">
           <div className="space-y-5">
-            <section className="rounded-[30px] border border-border bg-[linear-gradient(135deg,#0f245b_0%,#15357e_46%,#1ca0b0_100%)] p-6 text-white shadow-[0_18px_44px_rgba(22,43,117,0.16)] sm:p-7">
+            <section className="rounded-[30px] border border-border bg-[linear-gradient(135deg,#0f245b_0%,#15357e_46%,#1ca0b0_100%)] p-6 text-white shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)] sm:p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
                 Hot Brands
               </p>
@@ -62,7 +62,7 @@ export default async function RankingsPage() {
               </div>
             </section>
 
-            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_14px_38px_rgba(22,43,117,0.05)] sm:p-7">
+            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
               <h2 className="text-2xl font-semibold tracking-tight text-navy-strong">趋势关键词</h2>
               <div className="mt-5 flex flex-wrap gap-3">
                 {ranking.hotKeywords.map((keyword, index) => (
@@ -84,7 +84,7 @@ export default async function RankingsPage() {
           </div>
 
           <div className="space-y-5">
-            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_14px_38px_rgba(22,43,117,0.05)] sm:p-7">
+            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
               <div className="flex items-center justify-between gap-4">
                 <h2 className="text-2xl font-semibold tracking-tight text-navy-strong">精选内容</h2>
                 <Link href="/contents" className="text-sm font-medium text-copy-soft hover:text-navy-strong">
@@ -114,7 +114,7 @@ export default async function RankingsPage() {
               </div>
             </section>
 
-            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_14px_38px_rgba(22,43,117,0.05)] sm:p-7">
+            <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
               <div className="flex items-center justify-between gap-4">
                 <h2 className="text-2xl font-semibold tracking-tight text-navy-strong">合作信号</h2>
                 <Link href="/requests" className="text-sm font-medium text-copy-soft hover:text-navy-strong">

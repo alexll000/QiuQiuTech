@@ -1,15 +1,24 @@
-export const authFeatureNotes = [
-  "了解新鲜品牌沟通事件",
-  "追踪高频营销趋势风向",
-  "查看精选案例与专题策展",
-  "发布合作需求并管理申请记录",
-];
+export type SessionResponse = {
+  ok?: boolean;
+  isLoggedIn?: boolean;
+  userId?: string;
+  message?: string;
+};
 
-export const authActionHighlights = [
-  "提交营销案例与玩法拆解",
-  "保存内容草稿与审核记录",
-  "发布合作需求与站内联系",
-  "查看收藏与专题推荐提醒",
+export type SessionCreatePayload = {
+  userId: string;
+  displayName?: string;
+  phone?: string;
+  companyName?: string;
+  city?: string;
+  roleType?: "brand" | "marketer" | "agency" | "independent";
+  authSource?: "password" | "code" | "wechat" | "register";
+};
+
+export const authFeatureNotes = [
+  "把投稿、收藏和合作反馈留在同一个工作台",
+  "让内容判断、行业关注与个人资料形成连续记录",
+  "登录后可继续管理你的内容参与和合作进展",
 ];
 
 export const authQrPattern = [

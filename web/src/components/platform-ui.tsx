@@ -15,7 +15,7 @@ export function PageHero({
 }) {
   return (
     <section className="grid gap-4 lg:grid-cols-[1.06fr_0.94fr]">
-      <div className="iridescence-brand rounded-[32px] border border-border bg-white p-6 shadow-[0_18px_52px_rgba(22,43,117,0.06)] sm:p-8">
+      <div className="iridescence-brand rounded-[32px] border border-border bg-white p-6 shadow-[0_4px_16px_rgba(18,36,96,0.12),0_16px_48px_rgba(18,36,96,0.08)] sm:p-8">
         <span className="inline-flex items-center gap-2 rounded-full border border-[#dbe4f2] bg-[#f8fafe] px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] text-copy-soft">
           <span className="h-2 w-2 rounded-full bg-teal" />
           {eyebrow}
@@ -42,7 +42,7 @@ export function InsightPanel({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_14px_38px_rgba(22,43,117,0.05)] sm:p-7">
+    <section className="rounded-[30px] border border-border bg-white p-6 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] sm:p-7">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h2 className="text-2xl font-semibold tracking-tight text-navy-strong">{title}</h2>
@@ -68,7 +68,7 @@ export function FilterChips({
           key={item}
           className={`rounded-full border px-5 py-2.5 text-sm font-medium ${
             index === activeIndex
-              ? "border-transparent bg-[linear-gradient(135deg,#25b2aa_0%,#1c8fe8_100%)] text-white shadow-[0_10px_24px_rgba(37,111,230,0.18)]"
+              ? "border-transparent bg-[linear-gradient(135deg,#25b2aa_0%,#1c8fe8_100%)] text-white shadow-[0_4px_16px_rgba(37,111,230,0.14),0_16px_48px_rgba(37,111,230,0.10)]"
               : "border-border bg-white text-navy-strong"
           }`}
         >
@@ -119,7 +119,7 @@ export function DirectoryCard({
         : "border-border bg-white";
 
   const content = (
-    <article className={`rounded-[28px] border p-5 shadow-[0_10px_28px_rgba(22,43,117,0.04)] ${className}`}>
+    <article className={`rounded-[28px] border p-5 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)] ${className}`}>
       <span className="rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-copy-soft">
         {label}
       </span>
@@ -163,7 +163,7 @@ export function PrimaryButton({ href, label }: { href: string; label: string }) 
   return (
     <Link
       href={href}
-      className="rounded-full bg-navy-strong px-5 py-3 text-sm font-medium text-white hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(22,43,117,0.18)]"
+      className="rounded-full bg-navy-strong px-5 py-3 text-sm font-medium text-white hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)]"
     >
       {label}
     </Link>

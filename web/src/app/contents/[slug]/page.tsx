@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FavoriteButton } from "@/components/action-buttons";
 import { SiteShell } from "@/components/site-shell";
 import { findContentBySlug, listContents } from "@/lib/content-service";
 import { buildMetadata } from "@/lib/seo";
@@ -117,9 +118,12 @@ export default async function ContentDetailPage({
           <section className="rounded-[32px] border border-border bg-white p-6">
             <p className="text-xs uppercase tracking-[0.16em] text-copy-soft">Actions</p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <span className="rounded-full bg-navy-strong px-4 py-2 text-sm font-medium text-white">
-                收藏
-              </span>
+              <FavoriteButton
+                targetType="content"
+                targetId={item.slug}
+                title={item.title}
+                href={`/contents/${item.slug}`}
+              />
               <span className="rounded-full border border-border px-4 py-2 text-sm font-medium text-navy-strong">
                 分享
               </span>

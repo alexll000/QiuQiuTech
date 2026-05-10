@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { RequestDraftForm } from "@/components/request-draft-form";
 import { SiteShell } from "@/components/site-shell";
 import { listRequests } from "@/lib/content-service";
 import { buildMetadata } from "@/lib/seo";
@@ -33,7 +34,7 @@ export default async function RequestsPage() {
 
   return (
     <SiteShell activePath="/requests">
-      <section className="rounded-[34px] border border-border bg-white shadow-[0_20px_56px_rgba(22,43,117,0.05)]">
+      <section className="rounded-[34px] border border-border bg-white shadow-[0_4px_16px_rgba(18,36,96,0.12),0_16px_48px_rgba(18,36,96,0.08)]">
         <div className="border-b border-border px-6 py-5 sm:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap items-center gap-7 text-sm font-medium text-copy-soft">
@@ -63,7 +64,7 @@ export default async function RequestsPage() {
               </Link>
               <Link
                 href="/auth"
-                className="rounded-full bg-navy-strong px-5 py-2.5 text-sm font-medium text-white shadow-[0_12px_24px_rgba(22,43,117,0.18)]"
+                className="rounded-full bg-navy-strong px-5 py-2.5 text-sm font-medium text-white shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)]"
               >
                 注册
               </Link>
@@ -73,7 +74,8 @@ export default async function RequestsPage() {
 
         <div className="grid gap-0 xl:grid-cols-[300px_1fr]">
           <aside className="border-r border-border px-6 py-7 sm:px-8">
-            <div className="space-y-7">
+            <RequestDraftForm />
+            <div className="mt-7 space-y-7">
               {leftFilters.map((group, groupIndex) => (
                 <section key={group.title} className="border-b border-border pb-6 last:border-b-0 last:pb-0">
                   <div className="mb-4 flex items-center justify-between">
@@ -145,7 +147,7 @@ export default async function RequestsPage() {
               {requests.slice(0, 6).map((item, index) => (
                 <article
                   key={item.slug}
-                  className="rounded-[28px] border border-border bg-white p-5 shadow-[0_14px_36px_rgba(22,43,117,0.04)]"
+                  className="rounded-[28px] border border-border bg-white p-5 shadow-[0_2px_8px_rgba(18,36,96,0.10),0_8px_24px_rgba(18,36,96,0.07)]"
                 >
                   <div className="grid gap-5 sm:grid-cols-[126px_1fr_auto] sm:items-center">
                     <div className="flex h-[166px] items-center justify-center rounded-[18px] bg-[linear-gradient(180deg,#f8f9fc_0%,#eef2f8_100%)] text-copy-soft shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
@@ -193,7 +195,7 @@ export default async function RequestsPage() {
                     <div className="self-end sm:self-center">
                       <Link
                         href={`/requests/${item.slug}`}
-                        className="inline-flex rounded-[12px] bg-[#ffcb1e] px-5 py-3 text-base font-semibold text-navy-strong shadow-[0_12px_22px_rgba(255,203,30,0.18)]"
+                        className="inline-flex rounded-[12px] bg-[#ffcb1e] px-5 py-3 text-base font-semibold text-navy-strong shadow-[0_4px_16px_rgba(255,203,30,0.14),0_16px_48px_rgba(255,203,30,0.10)]"
                       >
                         申请合作
                       </Link>
@@ -210,7 +212,7 @@ export default async function RequestsPage() {
                   key={item}
                   className={`flex h-11 min-w-11 items-center justify-center rounded-[12px] px-4 ${
                     index === 0
-                      ? "bg-navy-strong font-semibold text-white shadow-[0_10px_24px_rgba(22,43,117,0.18)]"
+                      ? "bg-navy-strong font-semibold text-white shadow-[0_4px_16px_rgba(18,36,96,0.14),0_16px_48px_rgba(18,36,96,0.10)]"
                       : "text-navy-strong"
                   }`}
                 >

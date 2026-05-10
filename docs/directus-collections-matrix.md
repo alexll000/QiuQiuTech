@@ -129,7 +129,7 @@
 
 当前前台服务层已经预留这些请求落点：
 
-- [web/src/lib/cms-client.ts](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/web/src/lib/cms-client.ts)
+- [web/src/lib/cms-client.ts](web/src/lib/cms-client.ts)
   - `/items/homepage_payload`
   - `/items/contents?filter[status][_eq]=published&sort=-published_at`
   - `/items/contents?filter[slug][_eq]={slug}&limit=1`
@@ -157,7 +157,7 @@
   - 投稿人展示信息
   - 合作发布者展示信息
 - 核心字段：
-  - `user`
+  - `user_id`
   - `display_name`
   - `avatar`
   - `role_type`
@@ -166,6 +166,8 @@
   - `company_name`
   - `contact_policy`
   - `verification_status`
+  - `phone`
+  - `auth_source`
 
 ### `saved_items`
 

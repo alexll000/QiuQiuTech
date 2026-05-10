@@ -4,10 +4,10 @@
 
 ## 1. 本地启动
 
-进入 [cms/README.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/cms/README.md) 对应目录：
+进入 [cms/README.md](cms/README.md) 对应目录：
 
 ```bash
-cd /Users/stonework/Downloads/Trae/codeX/QiuQiuTech/cms
+cd cms
 cp .env.example .env
 docker compose up -d
 ```
@@ -16,6 +16,35 @@ docker compose up -d
 
 - `http://localhost:8055` -> Directus 后台
 - `http://localhost:5432` -> PostgreSQL
+
+如需快速进入联调状态，可先执行最小集合脚本：
+
+```bash
+cd "$QIQIUTECH_ROOT"
+docker exec -i qiqiutech-postgres psql -U directus -d qiqiutech < cms/sql/bootstrap-minimal-business-schema.sql
+node cms/scripts/init-local-foundation.mjs
+```
+
+其中 `init-local-foundation.mjs` 会顺序执行：
+
+- `apply-branding-and-language.mjs`
+- `seed-roles-and-policies.mjs`
+
+执行后可统一完成以下基线：
+
+- 后台品牌资源
+- 项目描述
+- 默认语言与管理员语言
+- `Member` / `Verified Member` / `Operator` 三类基础角色
+- 第一阶段 role-policy access 关联
+
+完成后建议立刻执行：
+
+```bash
+node cms/scripts/verify-local-foundation.mjs
+```
+
+若返回 `success=true` 且 `failedCount=0`，说明当前机器至少已完成第一阶段后台基础基线。
 
 ## 2. 先建立的核心 Collections
 
@@ -37,8 +66,8 @@ docker compose up -d
 
 详细字段参照：
 
-- [data-model.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/docs/data-model.md)
-- [directus-collections-matrix.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/docs/directus-collections-matrix.md)
+- [data-model.md](docs/data-model.md)
+- [directus-collections-matrix.md](docs/directus-collections-matrix.md)
 
 ## 3. 首页优先策略
 
@@ -59,20 +88,24 @@ QiuQiuTech 首页模块多，如果直接让前台拼很多 Directus 请求，�
   - `submissionShowcase`
   - `valueHighlights`
 
-这和当前 [web/src/app/page.tsx](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/web/src/app/page.tsx) 的消费结构保持一致。
+这和当前 [web/src/app/page.tsx](web/src/app/page.tsx) 的消费结构保持一致。
 
 ## 4. 推荐的角色
 
-至少先建立这四类角色：
+本地第一阶段已经脚本化沉淀的角色为：
 
-1. `admin`
-2. `operator`
-3. `verified_user`
-4. `public`
+1. `Administrator`（Directus 默认管理员）
+2. `Member`
+3. `Verified Member`
+4. `Operator`
+
+后续可继续补：
+
+5. `Visitor/Public`
 
 权限说明看：
 
-- [roles-permissions.md](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/docs/roles-permissions.md)
+- [roles-permissions.md](docs/roles-permissions.md)
 
 ## 5. 第一批内容录入顺序
 
@@ -91,7 +124,7 @@ QiuQiuTech 首页模块多，如果直接让前台拼很多 Directus 请求，�
 
 ## 6. 与前端对接时的环境变量
 
-在 [web/.env.example](/Users/stonework/Downloads/Trae/codeX/QiuQiuTech/web/.env.example) 基础上增加：
+在 [web/.env.example](web/.env.example) 基础上增加：
 
 ```bash
 NEXT_PUBLIC_USE_DIRECTUS=true
@@ -121,3 +154,19 @@ NEXT_PUBLIC_DIRECTUS_URL=http://localhost:8055
 5. 用户中心能读真实账户工作台数据
 6. 投稿中心和合作申请流程至少能读真实 schema 或 singleton 配置
 7. CMS 挂掉时前台仍能安全回退 mock
+
+## 9. 第二批优先打通的动作接口
+
+在第一批读取链路稳定后，建议优先打通：
+
+1. 收藏 / 取消收藏
+2. 通知已读
+3. 保存投稿草稿
+4. 提交合作申请
+
+当前前端本地契约已存在：
+
+- `/api/me/saved-items/toggle`
+- `/api/me/notifications/read`
+- `/api/submissions/drafts`
+- `/api/requests/[slug]/apply`

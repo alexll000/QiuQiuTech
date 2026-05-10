@@ -1,0 +1,84 @@
+# QiuQiuTech - Marketing Platforms Sources
+# 用途：营销热度趋势（内容平台聚合）
+#
+# 格式：
+# <url> | type=<case|event|playbook> | tags=<tag1,tag2,...>
+#
+# 约定：tags 里至少包含以下 5 类之一，用于趋势聚合：
+# - 品牌动态
+# - 联名
+# - 内容营销
+# - Campaign
+# - 趋势观察
+
+# SocialBeta
+https://socialbeta.com/ | type=case | tags=趋势观察,Campaign,内容营销
+https://socialbeta.com/tag/%E8%B7%A8%E7%95%8C%E8%81%94%E5%90%8D | type=case | tags=联名,Campaign
+https://socialbeta.com/tag/%E6%96%B0%E5%93%81%E8%90%A5%E9%94%80 | type=case | tags=品牌动态,Campaign
+https://socialbeta.com/tag/%E4%BB%A3%E8%A8%80%E4%BA%BA%E8%90%A5%E9%94%80 | type=case | tags=品牌动态,内容营销
+https://socialbeta.com/tag/%E5%86%85%E5%AE%B9%E8%90%A5%E9%94%80 | type=case | tags=内容营销,趋势观察
+
+# Digitaling
+https://www.digitaling.com/ | type=case | tags=趋势观察,Campaign
+https://www.digitaling.com/projects | type=case | tags=Campaign,内容营销
+https://www.digitaling.com/articles | type=case | tags=趋势观察,内容营销
+https://www.digitaling.com/search?type=article&kw=%E8%81%94%E5%90%8D | type=case | tags=联名,Campaign
+https://www.digitaling.com/search?type=article&kw=Campaign | type=case | tags=Campaign,趋势观察
+
+# 梅花网（作品库）
+https://www.meihua.info/ | type=case | tags=Campaign,内容营销
+https://www.meihua.info/shots | type=case | tags=Campaign,内容营销
+https://www.meihua.info/search?keyword=%E8%81%94%E5%90%8D | type=case | tags=联名,Campaign
+https://www.meihua.info/search?keyword=%E5%86%85%E5%AE%B9%E8%90%A5%E9%94%80 | type=case | tags=内容营销,趋势观察
+https://www.meihua.info/search?keyword=campaign | type=case | tags=Campaign,趋势观察
+
+# Campaign Brief
+https://campaignbrief.com/ | type=case | tags=趋势观察,Campaign
+https://campaignbrief.com/category/campaigns/ | type=case | tags=Campaign,内容营销
+https://campaignbrief.com/?s=brand | type=case | tags=品牌动态,趋势观察
+https://campaignbrief.com/?s=creative | type=case | tags=内容营销,趋势观察
+https://campaignbrief.com/?s=collab | type=case | tags=联名,Campaign
+
+# Adweek
+https://www.adweek.com/ | type=case | tags=趋势观察,Campaign
+https://www.adweek.com/brand-marketing/ | type=case | tags=品牌动态,趋势观察
+https://www.adweek.com/creativity/ | type=case | tags=Campaign,内容营销
+https://www.adweek.com/?s=collab | type=case | tags=联名,Campaign
+https://www.adweek.com/?s=content+marketing | type=case | tags=内容营销,趋势观察
+
+# TOPYS
+https://www.topys.cn/ | type=case | tags=趋势观察,内容营销
+https://www.topys.cn/search?keywords=%E5%86%85%E5%AE%B9 | type=case | tags=内容营销,趋势观察
+https://www.topys.cn/activity | type=case | tags=Campaign,品牌动态
+https://www.topys.cn/search?keywords=%E8%81%94%E5%90%8D | type=case | tags=联名,Campaign
+https://www.topys.cn/search?keywords=campaign | type=case | tags=Campaign,趋势观察
+
+# addog 业内资讯扩展（参考：https://www.addog.vip/#hot3）
+# 说明：先接入可确认域名的站点，后续再逐步补齐少量不确定域名。
+https://www.addog.vip/#hot3 | type=case | tags=趋势观察,Campaign,内容营销
+https://hd.weibo.com/ | type=case | tags=品牌动态,趋势观察,内容营销
+https://www.brandstar.com.cn/ | type=case | tags=品牌动态,Campaign,趋势观察
+https://www.mediapost.com/ | type=case | tags=趋势观察,内容营销
+https://www.brandingmag.com/ | type=case | tags=品牌动态,趋势观察
+https://www.brandchannel.com/ | type=case | tags=品牌动态,趋势观察
+https://digiday.com/ | type=case | tags=趋势观察,内容营销
+https://www.adguider.com/ | type=case | tags=Campaign,内容营销
+https://www.campaignchina.com/ | type=case | tags=Campaign,趋势观察
+https://www.adquan.com/ | type=case | tags=Campaign,内容营销
+https://madisonboom.com/ | type=case | tags=品牌动态,趋势观察
+https://www.prnasia.com/ | type=case | tags=品牌动态,趋势观察
+https://www.99u.com/ | type=case | tags=内容营销,趋势观察
+https://www.bestadsontv.com/ | type=case | tags=Campaign,内容营销
+https://www.ad-cn.net/ | type=case | tags=趋势观察,Campaign
+https://trendwatching.com/ | type=case | tags=趋势观察,品牌动态
+https://www.topmarketing.cn/ | type=case | tags=趋势观察,内容营销
+https://mashable.com/ | type=case | tags=趋势观察,内容营销
+https://www.warc.com/ | type=case | tags=趋势观察,Campaign
+https://www.socialmediatoday.com/ | type=case | tags=内容营销,趋势观察
+https://www.imediaconnection.com/ | type=case | tags=内容营销,趋势观察
+https://www.creativebloq.com/ | type=case | tags=内容营销,趋势观察
+https://www.woshipm.com/ | type=case | tags=趋势观察,内容营销
+https://www.niaogebiji.com/ | type=case | tags=趋势观察,内容营销
+https://www.36kr.com/ | type=case | tags=趋势观察,品牌动态
+https://www.osogoo.com/ | type=case | tags=Campaign,趋势观察
+
