@@ -9,6 +9,7 @@
 | Directus | 通过 `directusAuthedFetchJSON` 读取 `submissions` 集合（见 `marketing-heat-trend.ts`） |
 | 环境变量 | `NEXT_PUBLIC_DIRECTUS_URL`、`DIRECTUS_STATIC_TOKEN` 或管理员账号（见 `web/.env.example`） |
 | 数据字段 | 趋势分类与话题从 `date_updated`、`title`、`summary` 等推导 |
+| 起始数据（可选） | `cms/seed/submissions.seed.json` + `scripts/seed/import-submissions-seed.mjs`，见 `cms/seed/README.md` |
 
 ## 前端 / API 源码
 

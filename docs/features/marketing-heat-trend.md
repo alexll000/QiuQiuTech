@@ -41,6 +41,10 @@
 
 > 说明：当前不强依赖 `contents` 正式发布表。趋势以 `submissions` 为数据源（更贴近“抓取同步更新”）。
 
+### 2.2 起始数据（仓库内种子）
+
+他人克隆或新电脑拉起空库时，可先导入 **`cms/seed/submissions.seed.json`**，再用 **`node scripts/seed/import-submissions-seed.mjs`** 写入 Directus，首页即可有初始折线与话题（无需先跑爬虫）。细节见 **`cms/seed/README.md`**；更新快照用 **`node scripts/seed/export-submissions-seed.mjs`**（需本机 Postgres 容器）。
+
 ---
 
 ## 3. 数据模型（Directus）

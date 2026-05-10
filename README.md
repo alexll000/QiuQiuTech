@@ -29,7 +29,8 @@ QiuQiuTech 是一个面向品牌方、市场人、营销从业者、代理公司
    docker compose up -d
    ```
    Directus：<http://localhost:8055>。可与任意路径的前端工程**共用同一套 Docker**，只需前端 `.env.local` 指向同一地址。
-4. **更长步骤与排障**（换电脑、端口占用、营销热度无数据等）：[docs/setup-from-scratch.md](docs/setup-from-scratch.md)。营销热度模块文件索引：[docs/features/marketing-heat-trend-module-inventory.md](docs/features/marketing-heat-trend-module-inventory.md)。
+4. **（推荐）导入营销热度起始数据**：仓库自带 `cms/seed/submissions.seed.json`，在仓库根执行 `node scripts/seed/import-submissions-seed.mjs` —— 详见 [cms/seed/README.md](cms/seed/README.md)（可在配置好 Directus 鉴权 env 后导入，首页趋势图即有初始案例）。
+5. **更长步骤与排障**（换电脑、端口占用、营销热度无数据等）：[docs/setup-from-scratch.md](docs/setup-from-scratch.md)。营销热度模块文件索引：[docs/features/marketing-heat-trend-module-inventory.md](docs/features/marketing-heat-trend-module-inventory.md)。
 
 **说明**：`web/.env.local`、`cms/.env` 含密钥，**不会**提交到 Git；他人克隆后须自行从 `.env.example` 生成并填写。根目录 `data.db` 为空占位文件，已被忽略，**可不拷贝**，不影响运行。
 

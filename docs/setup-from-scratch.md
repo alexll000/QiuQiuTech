@@ -45,6 +45,22 @@ docker compose up -d
 
 **数据库结构 / 种子**：按 `cms/README.md` 执行 SQL 与 `node cms/scripts/init-local-foundation.mjs`（路径均以仓库根为准）。
 
+### 2.5）导入营销热度起始数据（推荐）
+
+仓库内自带 **`cms/seed/submissions.seed.json`**（由当前环境导出、可随提交更新），用于让首页「营销热度趋势」在新环境**立刻有折线与话题**，无需先跑爬虫。
+
+在仓库根目录、Directus 已启动且鉴权环境变量已配置（与 `web/.env.local` 同源即可）：
+
+```bash
+node scripts/seed/import-submissions-seed.mjs
+```
+
+详见 **`cms/seed/README.md`**。更新快照（你本机数据更新后想刷新仓库里的种子文件）：
+
+```bash
+node scripts/seed/export-submissions-seed.mjs
+```
+
 ### 3）前端
 
 ```bash
@@ -63,7 +79,7 @@ curl -s "http://127.0.0.1:3000/api/trends/marketing-heat?window=24h" | head -c 2
 
 ### 4）营销热度趋势无曲线时
 
-多为 Directus 未启动或 `submissions` 无数据：先确认 health `200`，再在 Directus 中有投稿记录或执行抓取/导入流程（见 `docs/features/marketing-heat-trend.md`）。
+先确认 **2.5** 的种子是否已导入；若仍为空：多为 Directus 未启动或 `submissions` 表无数据——确认 health `200`，再执行种子导入、抓取或 `docs/features/marketing-heat-trend.md` 中的流程。
 
 ---
 
@@ -86,3 +102,4 @@ curl -s "http://127.0.0.1:3000/api/trends/marketing-heat?window=24h" | head -c 2
 | `cms/README.md` | Directus、SQL、初始化脚本 |
 | `docs/features/marketing-heat-trend.md` | 营销热度功能与联调 |
 | `docs/features/marketing-heat-trend-module-inventory.md` | 该模块源码文件清单 |
+| `cms/seed/README.md` | 起始投稿数据（营销热度）导入说明 |
